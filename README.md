@@ -7,6 +7,8 @@ C project to make 3D game using raycaster
 
 [🔗 노션 정리](https://pouncing-elbow-0a4.notion.site/Cub3d-398cfcddc5cd4725a88dba8f2b59251b)
 
+</br>
+</br>
 
 ## 진행 기록
 
