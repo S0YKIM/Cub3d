@@ -34,6 +34,5 @@ int		main(int argc, char **argv)
     exit_with_free_all("Invalid number of arguments.", NULL, NULL, FT_FALSE);
 	init_map(&map);
 	fd = open_file_name(argv[1]);
-	
 	return (0);
 }
