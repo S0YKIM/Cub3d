@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 11:35:09 by sokim             #+#    #+#             */
-/*   Updated: 2022/08/28 17:56:22 by sokim            ###   ########.fr       */
+/*   Updated: 2022/08/28 18:22:34 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		open_file_name(char *path, t_map *map)
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 		exit_with_free_all("Cannot find the file.", NULL, NULL, FT_FALSE);
-	check_map_validation(fd, &map);
+	check_map_validation(fd, map);
 	return (fd);
 }
 
@@ -33,6 +33,6 @@ int		main(int argc, char **argv)
 	if (argc != 2)
     exit_with_free_all("Invalid number of arguments.", NULL, NULL, FT_FALSE);
 	init_map(&map);
-	fd = open_file_name(argv[1]);
+	fd = open_file_name(argv[1], &map);
 	return (0);
 }

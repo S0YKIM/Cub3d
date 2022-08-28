@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 11:41:26 by sokim             #+#    #+#             */
-/*   Updated: 2022/08/28 16:20:07 by sokim            ###   ########.fr       */
+/*   Updated: 2022/08/28 18:21:45 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ void	check_map_validation(int fd, t_map *map);
 /*
  * Exit functions
  */
-void	exit_with_err_msg(char *msg, char **map);
-void	exit_with_fd_close(char *msg, char *line, int fd);
+void	exit_with_free_all(char *msg, char **map, char *line, int fd);
 
 #endif
