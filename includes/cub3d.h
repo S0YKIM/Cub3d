@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 11:41:26 by sokim             #+#    #+#             */
-/*   Updated: 2022/08/28 15:57:58 by sokim            ###   ########.fr       */
+/*   Updated: 2022/08/28 16:52:19 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,10 @@ typedef struct	s_map
 	int			height;
 	int			width;
 	char		**map;
-	t_position	player;
 	int			num_of_player;
+	int			start;
+	int			end;
+	t_position	player;
 }				t_map;
 
 /*
