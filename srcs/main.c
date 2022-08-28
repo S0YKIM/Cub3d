@@ -6,22 +6,35 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 11:35:09 by sokim             #+#    #+#             */
-/*   Updated: 2022/08/28 11:42:30 by sokim            ###   ########.fr       */
+/*   Updated: 2022/08/28 13:52:45 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	print_err_msg(char *msg)
+void	exit_with_err_msg(char *msg)
 {
 	ft_putendl_fd(msg, 2);
-	return (FT_TRUE);
+	exit(EXIT_FAILURE);
 }
 
-int	main(int argc, char **argv)
+int		open_file_name(char *path)
 {
-	(void) argv;
+	int	fd;
+
+	fd = open(path, O_RDONLY);
+	if (fd < 0)
+		exit_with_err_msg("Invalid file name.");
+	return (fd);
+}
+
+int		main(int argc, char **argv)
+{
+	int	fd;
+
 	if (argc != 2)
-		return (print_err_msg("Invalid number of arguments."));
+		exit_with_err_msg("Invalid number of arguments.");
+	fd = open_file_name(argv[1]);
+	
 	return (0);
 }

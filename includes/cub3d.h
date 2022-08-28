@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 11:41:26 by sokim             #+#    #+#             */
-/*   Updated: 2022/08/28 13:08:09 by sokim            ###   ########.fr       */
+/*   Updated: 2022/08/28 13:50:10 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CUB_3D_H
 
 # include "libft.h"
+# include <stdio.h>
 # include <fcntl.h>
 
 # define FT_FALSE 0
