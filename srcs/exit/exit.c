@@ -6,13 +6,13 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 15:55:11 by sokim             #+#    #+#             */
-/*   Updated: 2022/08/28 15:55:20 by sokim            ###   ########.fr       */
+/*   Updated: 2022/08/28 17:56:39 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	exit_with_err_msg(char *msg, char **map)
+void	exit_with_free_all(char *msg, char **map, char *line, int fd)
 {
 	int	i;
 
@@ -23,14 +23,11 @@ void	exit_with_err_msg(char *msg, char **map)
 			free(map[i]);
 			i++;
 	}
-	ft_putendl_fd(msg, 2);
-	exit(EXIT_FAILURE);
-}
-
-void	exit_with_fd_close(char *msg, char *line, int fd)
-{
 	if (line)
 		free(line);
-	close(fd);
-	exit_with_err_msg(msg, NULL);
+	if (fd)
+		close(fd);
+	ft_putendl_fd("Error", 2);
+	ft_putendl_fd(msg, 2);
+	exit(EXIT_FAILURE);
 }
