@@ -6,7 +6,11 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 11:41:26 by sokim             #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/08/28 16:52:19 by sokim            ###   ########.fr       */
+=======
+/*   Updated: 2022/08/28 16:20:07 by sokim            ###   ########.fr       */
+>>>>>>> e14c61ee6d0038a0e05c227744b334c8252e7175
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +48,11 @@ typedef struct	s_map
 	int			end;
 	t_position	player;
 }				t_map;
+
+/*
+ * Init functions
+ */
+void	init_map(t_map *map);
 
 /*
  * Check functions

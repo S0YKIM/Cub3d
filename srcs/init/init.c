@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit.c                                             :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/28 15:55:11 by sokim             #+#    #+#             */
-/*   Updated: 2022/08/28 17:56:39 by sokim            ###   ########.fr       */
+/*   Created: 2022/08/28 16:16:58 by sokim             #+#    #+#             */
+/*   Updated: 2022/08/28 16:19:35 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	exit_with_free_all(char *msg, char **map, char *line, int fd)
+void	init_map(t_map *map)
 {
-	int	i;
-
-	if (map)
-	{
-		i = 0;
-		while (map[i])
-			free(map[i]);
-			i++;
-	}
-	if (line)
-		free(line);
-	if (fd)
-		close(fd);
-	ft_putendl_fd("Error", 2);
-	ft_putendl_fd(msg, 2);
-	exit(EXIT_FAILURE);
+	map->height = 0;
+	map->width = 0;
+	map->map = NULL;
+	map->player.x = -1;
+	map->player.y = -1;
+	map->player.direction = -1;
+	map->num_of_player = 0;
 }
