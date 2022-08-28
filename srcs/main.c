@@ -12,10 +12,9 @@
 
 #include "cub3d.h"
 
-int		open_file_name(char *path)
+int		open_file_name(char *path, t_map *map)
 {
 	int		fd;
-	t_map	map;
 
 	if (!path || ft_strcmp(path + ft_strlen(path) - 4, ".cub") != 0)
 		exit_with_free_all("Invalid file name.", NULL, NULL, FT_FALSE);
@@ -28,10 +27,12 @@ int		open_file_name(char *path)
 
 int		main(int argc, char **argv)
 {
-	int	fd;
+	int		fd;
+	t_map	map;
 
 	if (argc != 2)
-		exit_with_free_all("Invalid number of arguments.", NULL, NULL, FT_FALSE);
+    exit_with_free_all("Invalid number of arguments.", NULL, NULL, FT_FALSE);
+	init_map(&map);
 	fd = open_file_name(argv[1]);
 	
 	return (0);
