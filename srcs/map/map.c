@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 15:54:19 by sokim             #+#    #+#             */
-/*   Updated: 2022/08/28 15:56:38 by sokim            ###   ########.fr       */
+/*   Updated: 2022/08/28 16:46:51 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	read_map(int fd, t_map *map)
 	while (ret)
 	{
 		if (ret == FT_ERROR)
-			exit_with_fd_close("ERROR: Cannot read the next line.", line, fd);
+			exit_with_fd_close("Cannot read the next line.", line, fd);
 		raw = ft_strjoin_free(raw, line, 'B');
 		raw = ft_strjoin_free(raw, "\n", 'L');
 		map->height++;
@@ -34,7 +34,7 @@ static void	read_map(int fd, t_map *map)
 	}
 	free(line);
 	if (map->height == 0)
-		exit_with_err_msg("ERROR: Empty map.", NULL);
+		exit_with_err_msg("Empty map.", NULL);
 	map->map = ft_split(raw, '\n');
 	free(raw);
 }
