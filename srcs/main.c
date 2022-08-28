@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 11:35:09 by sokim             #+#    #+#             */
-/*   Updated: 2022/08/28 15:55:08 by sokim            ###   ########.fr       */
+/*   Updated: 2022/08/28 17:44:30 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,5 @@ int		main(int argc, char **argv)
 	if (argc != 2)
 		exit_with_err_msg("ERROR: Invalid number of arguments.", NULL);
 	fd = open_file_name(argv[1]);
-	
 	return (0);
 }
