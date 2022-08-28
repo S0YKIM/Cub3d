@@ -6,7 +6,7 @@
 #    By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/28 11:32:01 by sokim             #+#    #+#              #
-#    Updated: 2022/08/28 15:55:45 by sokim            ###   ########.fr        #
+#    Updated: 2022/08/28 16:21:49 by sokim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
 SRCS = srcs/main.c \
+		srcs/init/init.c \
 		srcs/exit/exit.c \
 		srcs/map/map.c
 
