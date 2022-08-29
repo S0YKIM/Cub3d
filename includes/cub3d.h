@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 11:41:26 by sokim             #+#    #+#             */
-/*   Updated: 2022/08/29 12:00:16 by sokim            ###   ########.fr       */
+/*   Updated: 2022/08/29 13:02:44 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct	s_map
 
 typedef struct	s_info
 {
+	int			fd;
 	t_map		map;
 	t_position	player;
 }				t_info;
@@ -56,16 +57,16 @@ typedef struct	s_info
 /*
  * Init functions
  */
-void	init_map(t_map *map);
+void	init_info(t_info *info);
 
 /*
  * Check functions
  */
-void	check_map_validation(int fd, t_info *info);
+void	check_map_validation(t_info *info);
 
 /*
  * Exit functions
  */
-void	exit_with_free_all(char *msg, char **map, char *line, int fd);
+void	exit_with_free_all(char *msg, char *line, t_info *info);
 
 #endif
