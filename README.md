@@ -43,4 +43,14 @@ C project to make 3D game using ray-caster
 
 ### 8월 29일(월)
 #### Done
+- 맵 파일에서 texture, color 부분 파싱하여 저장
+- 맵 파일에서 map 시작점과 종료 지점 구분하여 구조체에 저장
+- map 저장하기 전에 전제조건(texture, color)이 충족되었는지 유효성 검사
+#### To-do
+- texture, ceiling, floor 중복 검사
+- 파일 마지막 읽어들이고 malloc 이 되지 않은 것을 free() 하면서 abort 뜨는 문제 해결
+- flawless 맵 체크 구현하기(DFS)
+
+### 8월 30일(화)
+#### Done
 #### To-do
