@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 15:54:19 by sokim             #+#    #+#             */
-/*   Updated: 2022/08/29 13:11:13 by sokim            ###   ########.fr       */
+/*   Updated: 2022/08/29 13:34:56 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,12 @@ static void	save_wall_texture(t_map *map, char *line)
 		map->tex_files[FT_NORTH] = ft_strdup(line + 3);
 }
 
-static void	change_into_rgb_color(t_map *map, char *line)
+static void	change_into_rgb_color(t_map *map, char *line, int *color)
 {
-	(void) map;
 	if (!ft_strncmp(line, "F ", 2))
-		;
+		map->floor = color[0] << 16 | color[1] << 8 | color[2];
 	else if (!ft_strncmp(line, "C ", 2))
-		;
+		map->ceiling = color[0] << 16 | color[1] << 8 | color[2];
 }
 
 static void	check_floor_ceiling_color(t_info *info, char *line)
@@ -51,15 +50,24 @@ static void	check_floor_ceiling_color(t_info *info, char *line)
 
 	i = 2;
 	cnt = 0;
-	while (ft_isspace(line[i]))
-		i++;
-	if (ft_isdigit(line[i]))
-		color[cnt] = ft_atoi(line + i);
-	while (ft_isdigit(line[i]))
-		i++;
-	if (line[i] && line[i] != ',')
+	while (line && cnt < 3)
+	{
+		while (ft_isspace(line[i]))
+			i++;
+		if (ft_isdigit(line[i]))
+			color[cnt] = ft_atoi(line + i);
+		if (color[cnt] < 0 || color[cnt] > 255)
+			exit_with_free_all("Invalid color type.", line, info);
+		while (ft_isdigit(line[i]))
+			i++;
+		if (line[i] && line[i] != ',')
+			exit_with_free_all("Invalid color type.", line, info);
+		if (line[i] && line[i++] == ',')
+			cnt++;
+	}
+	if (cnt != 2)
 		exit_with_free_all("Invalid color type.", line, info);
-	change_into_rgb_color(&info->map, line);
+	change_into_rgb_color(&info->map, line, color);
 }
 
 static void	check_map_contents(t_info *info, char *line)
