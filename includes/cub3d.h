@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 11:41:26 by sokim             #+#    #+#             */
-/*   Updated: 2022/08/29 13:02:44 by sokim            ###   ########.fr       */
+/*   Updated: 2022/08/29 15:35:10 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct	s_map
 	int			num_of_player;
 	int			start;
 	int			end;
+	int			flag;
 }				t_map;
 
 typedef struct	s_info
