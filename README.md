@@ -31,3 +31,16 @@ C project to make 3D game using ray-caster
 - 위에서 공부한 내용 코드로 작성
 
 ### 8월 28일(일)
+#### Done
+- 메이크파일, 헤더파일, 메인 작성
+- 맵 파일 열기, 컨텐츠 유효성 검사
+- map, player 구조체 만들고 초기화
+- 맵 파싱하여 map, player 구조체 데이터 저장
+#### To-do
+- flawless 맵 체크 구현하기(DFS)
+- 맵 파일에서 texture, color 부분 파싱하여 저장
+- 맵 파일에서 map 시작점과 종료 지점 구분하여 구조체에 저장
+
+### 8월 29일(월)
+#### Done
+#### To-do
