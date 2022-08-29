@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 11:35:09 by sokim             #+#    #+#             */
-/*   Updated: 2022/08/29 13:12:48 by sokim            ###   ########.fr       */
+/*   Updated: 2022/08/29 16:16:19 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		main(int argc, char **argv)
 	t_info	info;
 
 	if (argc != 2)
-    exit_with_free_all("Invalid number of arguments.", NULL, &info);
+		exit_with_free_all("Invalid number of arguments.", NULL, &info);
 	init_info(&info);
 	open_file_name(argv[1], &info);
 	system("leaks cub3d");

@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 15:54:19 by sokim             #+#    #+#             */
-/*   Updated: 2022/08/29 13:34:56 by sokim            ###   ########.fr       */
+/*   Updated: 2022/08/29 16:04:26 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,40 @@ static int	count_map_lines(t_map *map)
 	return (i);
 }
 
+// static void	save_wall_texture(t_map *map, char *line)
+// {
+// 	if (!ft_strncmp(line, "EA ", 3))
+// 		map->tex_files[FT_EAST] = ft_strdup(line + 3);
+// 	else if (!ft_strncmp(line, "WE ", 3))
+// 		map->tex_files[FT_WEST] = ft_strdup(line + 3);
+// 	else if (!ft_strncmp(line, "SO ", 3))
+// 		map->tex_files[FT_SOUTH] = ft_strdup(line + 3);
+// 	else if (!ft_strncmp(line, "NO ", 3))
+// 		map->tex_files[FT_NORTH] = ft_strdup(line + 3);
+// }
+
 static void	save_wall_texture(t_map *map, char *line)
 {
 	if (!ft_strncmp(line, "EA ", 3))
+	{
 		map->tex_files[FT_EAST] = ft_strdup(line + 3);
+		printf("%s\n", map->tex_files[FT_EAST]);
+	}
 	else if (!ft_strncmp(line, "WE ", 3))
+	{
 		map->tex_files[FT_WEST] = ft_strdup(line + 3);
+		printf("%s\n", map->tex_files[FT_WEST]);
+	}
 	else if (!ft_strncmp(line, "SO ", 3))
+	{
 		map->tex_files[FT_SOUTH] = ft_strdup(line + 3);
+		printf("%s\n", map->tex_files[FT_SOUTH]);
+	}
 	else if (!ft_strncmp(line, "NO ", 3))
+	{
 		map->tex_files[FT_NORTH] = ft_strdup(line + 3);
+		printf("%s\n", map->tex_files[FT_NORTH]);
+	}
 }
 
 static void	change_into_rgb_color(t_map *map, char *line, int *color)
@@ -70,17 +94,50 @@ static void	check_floor_ceiling_color(t_info *info, char *line)
 	change_into_rgb_color(&info->map, line, color);
 }
 
+static void	check_preconditions(t_map *map, t_info *info, char *line)
+{
+	int	i;
+
+	if (info->map.flag == FT_TRUE)
+		return ;
+	i = 0;
+	while (i < 4)
+	{
+		if (!map->tex_files[i])
+			exit_with_free_all("Not enough texture info.", line, info);
+	}
+	if (map->floor == FT_ERROR)
+		exit_with_free_all("There is no floor color info.", line, info);
+	if (map->ceiling == FT_ERROR)
+		exit_with_free_all("There is no ceiling color info.", line, info);
+	info->map.flag = FT_TRUE;
+}
+
 static void	check_map_contents(t_info *info, char *line)
 {
+	int	i;
+
 	if (line[0] == '\n')
 		return ;
 	if (!ft_strncmp(line, "EA ", 3) || !ft_strncmp(line, "WE ", 3) || !ft_strncmp(line, "SO ", 3) || !ft_strncmp(line, "NO ", 3))
 		save_wall_texture(&info->map, line);
-	if (!ft_strncmp(line, "F ", 2) || !ft_strncmp(line, "C ", 2))
+	else if (!ft_strncmp(line, "F ", 2) || !ft_strncmp(line, "C ", 2))
 		check_floor_ceiling_color(info, line);
-	if (!ft_strchr(" EWSN01", line[0]))
+	else if (!ft_strchr(" EWSN01", line[0]))
 		exit_with_free_all("Invalid map contents.", line, info);
-
+	else
+	{
+		check_preconditions(&info->map, info, line);
+		i = 0;
+		while (line[i] && line[i] != '\n')
+			i++;
+		if (!line[i])
+			exit_with_free_all("Invalid map contents.", line, info);
+		if (i > info->map.width)
+			info->map.width = i;
+		if (info->map.start == 0)
+			info->map.start = info->map.end;
+	}
 }
 
 static void	read_map(t_info *info)
@@ -88,22 +145,21 @@ static void	read_map(t_info *info)
 	int		ret;
 	char	*line;
 	char	*raw;
-	int		tmp;
 	
 	ret = get_next_line(info->fd, &line);
+	raw = ft_strdup("");
 	while (ret)
 	{
 		if (ret == FT_ERROR)
 			exit_with_free_all("Cannot read the next line.", line, info);
-		raw = ft_strjoin_free(raw, line, 'B');
+		raw = ft_strjoin_free(raw, line, 'L');
 		raw = ft_strjoin_free(raw, "\n", 'L');
-		info->map.height++;
-		tmp = ft_strlen(line);
-		if (tmp > info->map.width)
-			info->map.width = tmp;
+		info->map.end++;
+		printf("line: %s\n", line);
 		check_map_contents(info, line);
 		ret = get_next_line(info->fd, &line);
 	}
+	info->map.height = info->map.end - info->map.start;
 	free(line);
 	if (info->map.height == 0)
 		exit_with_free_all("Empty map.", NULL, info);

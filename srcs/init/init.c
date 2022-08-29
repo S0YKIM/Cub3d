@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 16:16:58 by sokim             #+#    #+#             */
-/*   Updated: 2022/08/29 13:08:03 by sokim            ###   ########.fr       */
+/*   Updated: 2022/08/29 15:35:32 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ static void	init_map(t_info *info, t_map *map)
 	map->floor = -1;
 	map->ceiling = -1;
 	map->num_of_player = 0;
+	map->start = 0;
+	map->end = 0;
+	map->flag = 0;
 }
 
 void	init_info(t_info *info)
