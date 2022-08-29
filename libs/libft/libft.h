@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 15:01:44 by sokim             #+#    #+#             */
-/*   Updated: 2022/01/26 22:00:32 by sokim            ###   ########.fr       */
+/*   Updated: 2022/08/29 12:42:29 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,6 @@ t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 
 /* Custom */
 char				*ft_strjoin_free(char *s1, char *s2, char c);
+int					ft_isspace(char c);
 
 #endif
