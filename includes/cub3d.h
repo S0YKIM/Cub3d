@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 11:41:26 by sokim             #+#    #+#             */
-/*   Updated: 2022/08/30 15:37:19 by sokim            ###   ########.fr       */
+/*   Updated: 2022/08/30 16:23:46 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,12 @@ void	init_info(t_info *info);
 void	check_map_validation(t_info *info);
 int		check_map_contents(t_info *info, char *line);
 void	check_wall(t_info *info);
+
+/*
+ * Identifier functions
+ */
+int	save_wall_texture(t_info *info, char *line);
+int	save_floor_ceiling_color(t_info *info, char *line);
 
 /*
  * Exit functions
