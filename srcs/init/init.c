@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 16:16:58 by sokim             #+#    #+#             */
-/*   Updated: 2022/08/29 15:35:32 by sokim            ###   ########.fr       */
+/*   Updated: 2022/08/30 11:51:56 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ static void	init_map(t_info *info, t_map *map)
 	map->height = 0;
 	map->width = 0;
 	map->map = NULL;
+	map->tmp = ft_strdup("");
+	if (!map->tmp)
+		exit_with_free_all("Memory allocation failed.", NULL, info);
 	map->tex_files = (char **)ft_calloc(4, sizeof(char *));
 	if (!map->tex_files)
 		exit_with_free_all("Memory allocation failed.", NULL, info);
