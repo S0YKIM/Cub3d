@@ -37,9 +37,9 @@ C project to make 3D game using ray-caster
 - map, player 구조체 만들고 초기화
 - 맵 파싱하여 map, player 구조체 데이터 저장
 #### To-do
-- flawless 맵 체크 구현하기(DFS)
 - 맵 파일에서 texture, color 부분 파싱하여 저장
 - 맵 파일에서 map 시작점과 종료 지점 구분하여 구조체에 저장
+- 맵이 벽으로 둘어쌓여 있는지 유효성 검사
 
 ### 8월 29일(월)
 #### Done
@@ -49,8 +49,16 @@ C project to make 3D game using ray-caster
 #### To-do
 - texture, ceiling, floor 중복 검사
 - 파일 마지막 읽어들이고 malloc 이 되지 않은 것을 free() 하면서 abort 뜨는 문제 해결
-- flawless 맵 체크 구현하기(DFS)
+- 맵이 벽으로 둘어쌓여 있는지 유효성 검사
 
 ### 8월 30일(화)
+#### Done
+- texture, ceiling, floor, player 중복 검사
+- double free 문제 해결, map[i][j]가 쓰레기값에 접근하는 문제 해결
+- 파일에서 맵 부분만 추출하여 map 배열에 담기
+- 맵 내용물 사이에 newline 이 끼어있는 경우 에러 처리
+#### To-do
+
+### 9월 2일(금)
 #### Done
 #### To-do
