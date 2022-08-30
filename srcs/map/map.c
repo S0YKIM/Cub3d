@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 15:54:19 by sokim             #+#    #+#             */
-/*   Updated: 2022/08/30 11:40:02 by sokim            ###   ########.fr       */
+/*   Updated: 2022/08/30 12:01:54 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,12 +125,11 @@ static int	check_map_contents(t_info *info, char *line)
 		i = 0;
 		while (line[i] && line[i] != '\n')
 			i++;
-		// if (!line[i])
-		// 	exit_with_free_all("Invalid map contents.", line, info);
 		if (i > info->map.width)
 			info->map.width = i;
-		if (info->map.start == 0)
-			info->map.start = info->map.end;
+		info->map.height++;
+		info->map.tmp = ft_strjoin_free(info->map.tmp, line, 'L');
+		info->map.tmp = ft_strjoin_free(info->map.tmp, "\n", 'L');
 	}
 	return (FT_TRUE);
 }
@@ -139,28 +138,22 @@ static void	read_map(t_info *info)
 {
 	int		ret;
 	char	*line;
-	char	*raw;
 	
 	ret = get_next_line(info->fd, &line);
-	raw = ft_strdup("");
 	while (ret)
 	{
 		if (ret == FT_ERROR)
 			exit_with_free_all("Cannot read the next line.", line, info);
-		raw = ft_strjoin_free(raw, line, 'L');
-		raw = ft_strjoin_free(raw, "\n", 'L');
 		info->map.end++;
 		printf("line: %s\n", line);
 		check_map_contents(info, line);
 		free(line);
 		ret = get_next_line(info->fd, &line);
 	}
-	info->map.height = info->map.end - info->map.start;
 	free(line);
 	if (info->map.height == 0)
 		exit_with_free_all("Empty map.", NULL, info);
-	info->map.map = ft_split(raw, '\n');
-	free(raw);
+	info->map.map = ft_split(info->map.tmp, '\n');
 	if (count_map_lines(info->map.map) != info->map.height)
 		exit_with_free_all("Wrong map.", NULL, info);
 }
