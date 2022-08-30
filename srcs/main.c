@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 11:35:09 by sokim             #+#    #+#             */
-/*   Updated: 2022/08/30 16:12:16 by sokim            ###   ########.fr       */
+/*   Updated: 2022/08/30 16:52:22 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,6 @@ int	main(int argc, char **argv)
 		exit_with_free_all("Invalid number of arguments.", NULL, &info);
 	init_info(&info);
 	open_file_name(argv[1], &info);
-	close(info.fd);
+	free_all(NULL, &info);
 	return (0);
 }
