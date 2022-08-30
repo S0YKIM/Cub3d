@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 15:54:19 by sokim             #+#    #+#             */
-/*   Updated: 2022/08/30 11:06:27 by sokim            ###   ########.fr       */
+/*   Updated: 2022/08/30 11:40:02 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,25 +22,39 @@ static int	count_map_lines(char **map)
 	return (i);
 }
 
-static int	save_wall_texture(t_map *map, char *line)
+static int	save_wall_texture(t_info *info, char *line)
 {
+	int	direction;
+
+	direction = -1;
 	if (!ft_strncmp(line, "EA ", 3))
-		map->tex_files[FT_EAST] = ft_strdup(line + 3);
+		direction = FT_EAST;
 	else if (!ft_strncmp(line, "WE ", 3))
-		map->tex_files[FT_WEST] = ft_strdup(line + 3);
+		direction = FT_WEST;
 	else if (!ft_strncmp(line, "SO ", 3))
-		map->tex_files[FT_SOUTH] = ft_strdup(line + 3);
+		direction = FT_SOUTH;
 	else if (!ft_strncmp(line, "NO ", 3))
-		map->tex_files[FT_NORTH] = ft_strdup(line + 3);
+		direction = FT_NORTH;
+	if (info->map.tex_files[direction])
+		exit_with_free_all("Duplicated wall texture info.", line, info);
+	info->map.tex_files[direction] = ft_strdup(line + 3);
 	return (FT_TRUE);
 }
 
-static int	change_into_rgb_color(t_map *map, char *line, int *color)
+static int	change_into_rgb_color(t_info *info, char *line, int *color)
 {
 	if (!ft_strncmp(line, "F ", 2))
-		map->floor = color[0] << 16 | color[1] << 8 | color[2];
+	{
+		if (info->map.floor != -1)
+			exit_with_free_all("Duplicated floor color info.", line, info);
+		info->map.floor = color[0] << 16 | color[1] << 8 | color[2];
+	}
 	else if (!ft_strncmp(line, "C ", 2))
-		map->ceiling = color[0] << 16 | color[1] << 8 | color[2];
+	{
+		if (info->map.ceiling != -1)
+			exit_with_free_all("Duplicated ceiling color info.", line, info);
+		info->map.ceiling = color[0] << 16 | color[1] << 8 | color[2];
+	}
 	return (FT_TRUE);
 }
 
@@ -69,7 +83,7 @@ static int	check_floor_ceiling_color(t_info *info, char *line)
 	}
 	if (cnt != 2)
 		exit_with_free_all("Invalid color type.", line, info);
-	return (change_into_rgb_color(&info->map, line, color));
+	return (change_into_rgb_color(info, line, color));
 }
 
 static void	check_preconditions(t_map *map, t_info *info, char *line)
@@ -100,7 +114,7 @@ static int	check_map_contents(t_info *info, char *line)
 	if (line[0] == '\0' || line[0] == '\n')
 		return (FT_FALSE);
 	if (!ft_strncmp(line, "EA ", 3) || !ft_strncmp(line, "WE ", 3) || !ft_strncmp(line, "SO ", 3) || !ft_strncmp(line, "NO ", 3))
-		return (save_wall_texture(&info->map, line));
+		return (save_wall_texture(info, line));
 	else if (!ft_strncmp(line, "F ", 2) || !ft_strncmp(line, "C ", 2))
 		return (check_floor_ceiling_color(info, line));
 	while (line[i])
