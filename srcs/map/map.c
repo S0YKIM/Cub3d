@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 15:54:19 by sokim             #+#    #+#             */
-/*   Updated: 2022/08/29 17:45:50 by sokim            ###   ########.fr       */
+/*   Updated: 2022/08/30 11:06:27 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,7 @@ static void	read_map(t_info *info)
 		ret = get_next_line(info->fd, &line);
 	}
 	info->map.height = info->map.end - info->map.start;
-	// free(line);
+	free(line);
 	if (info->map.height == 0)
 		exit_with_free_all("Empty map.", NULL, info);
 	info->map.map = ft_split(raw, '\n');
