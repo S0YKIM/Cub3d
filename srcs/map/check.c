@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 13:15:55 by sokim             #+#    #+#             */
-/*   Updated: 2022/08/30 13:20:31 by sokim            ###   ########.fr       */
+/*   Updated: 2022/08/30 16:12:48 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,8 @@ int	check_map_contents(t_info *info, char *line)
 	i = 0;
 	if (line[0] == '\0' || line[0] == '\n')
 		return (FT_FALSE);
-	if (!ft_strncmp(line, "EA ", 3) || !ft_strncmp(line, "WE ", 3) || !ft_strncmp(line, "SO ", 3) || !ft_strncmp(line, "NO ", 3))
+	if (!ft_strncmp(line, "EA ", 3) || !ft_strncmp(line, "WE ", 3) \
+	|| !ft_strncmp(line, "SO ", 3) || !ft_strncmp(line, "NO ", 3))
 		return (save_wall_texture(info, line));
 	else if (!ft_strncmp(line, "F ", 2) || !ft_strncmp(line, "C ", 2))
 		return (save_floor_ceiling_color(info, line));
