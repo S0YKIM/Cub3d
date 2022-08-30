@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 11:35:09 by sokim             #+#    #+#             */
-/*   Updated: 2022/08/30 13:10:21 by sokim            ###   ########.fr       */
+/*   Updated: 2022/08/30 16:12:16 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	open_file_name(char *path, t_info *info)
 	check_map_validation(info);
 }
 
-int		main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_info	info;
 
