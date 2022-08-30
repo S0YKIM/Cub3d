@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 15:54:19 by sokim             #+#    #+#             */
-/*   Updated: 2022/08/30 15:18:24 by sokim            ###   ########.fr       */
+/*   Updated: 2022/08/30 16:34:39 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	read_map(t_info *info)
 {
 	int		ret;
 	char	*line;
-	
+
 	ret = get_next_line(info->fd, &line);
 	while (ret)
 	{
