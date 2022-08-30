@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 11:41:26 by sokim             #+#    #+#             */
-/*   Updated: 2022/08/30 13:21:06 by sokim            ###   ########.fr       */
+/*   Updated: 2022/08/30 15:37:19 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct	s_position
 {
 	int		x;
 	int		y;
-	int		direction;
+	char	direction;
 }				t_position;
 
 typedef struct	s_map
@@ -66,6 +66,7 @@ void	init_info(t_info *info);
  */
 void	check_map_validation(t_info *info);
 int		check_map_contents(t_info *info, char *line);
+void	check_wall(t_info *info);
 
 /*
  * Exit functions

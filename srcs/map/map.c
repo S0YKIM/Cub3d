@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 15:54:19 by sokim             #+#    #+#             */
-/*   Updated: 2022/08/30 13:22:10 by sokim            ###   ########.fr       */
+/*   Updated: 2022/08/30 15:18:24 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ static void	get_player_position(t_info *info)
 			{
 				info->player.x = j;
 				info->player.y = i;
+				info->player.direction = info->map.map[i][j];
 				info->map.num_of_player++;
 			}
 			j++;
@@ -74,6 +75,6 @@ static void	get_player_position(t_info *info)
 void	check_map_validation(t_info *info)
 {
 	read_map(info);
-	// check_wall(map);
+	check_wall(info);
 	get_player_position(info);
 }
