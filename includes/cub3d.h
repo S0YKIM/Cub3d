@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 11:41:26 by sokim             #+#    #+#             */
-/*   Updated: 2022/08/30 16:23:46 by sokim            ###   ########.fr       */
+/*   Updated: 2022/08/30 16:43:03 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ int	save_floor_ceiling_color(t_info *info, char *line);
 /*
  * Exit functions
  */
+void	free_all(char *line, t_info *info);
 void	exit_with_free_all(char *msg, char *line, t_info *info);
 
 #endif
