@@ -6,7 +6,7 @@
 #    By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/28 11:32:01 by sokim             #+#    #+#              #
-#    Updated: 2022/08/29 17:48:19 by sokim            ###   ########.fr        #
+#    Updated: 2022/08/30 13:22:35 by sokim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ CFLAGS = -Wall -Wextra -Werror
 SRCS = srcs/main.c \
 		srcs/init/init.c \
 		srcs/exit/exit.c \
-		srcs/map/map.c
+		srcs/map/map.c \
+		srcs/map/check.c
 
 OBJS = $(SRCS:.c=.o)
 OBJS_B = $(SRCS_B:.c=.o)
