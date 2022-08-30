@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 11:41:26 by sokim             #+#    #+#             */
-/*   Updated: 2022/08/30 16:43:03 by sokim            ###   ########.fr       */
+/*   Updated: 2022/08/30 16:54:22 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,46 +15,10 @@
 
 # include "libft.h"
 # include "get_next_line.h"
+# include "struct.h"
+# include "macro.h"
 # include <stdio.h>
 # include <fcntl.h>
-
-# define FT_FALSE 0
-# define FT_TRUE 1
-# define FT_ERROR -1
-
-# define FT_EAST 0
-# define FT_WEST 1
-# define FT_SOUTH 2
-# define FT_NORTH 3
-
-typedef struct	s_position
-{
-	int		x;
-	int		y;
-	char	direction;
-}				t_position;
-
-typedef struct	s_map
-{
-	int			height;
-	int			width;
-	char		**map;
-	char		*tmp;
-	char		**tex_files;
-	int			floor;
-	int			ceiling;
-	int			num_of_player;
-	int			start;
-	int			end;
-	int			flag;
-}				t_map;
-
-typedef struct	s_info
-{
-	int			fd;
-	t_map		map;
-	t_position	player;
-}				t_info;
 
 /*
  * Init functions
