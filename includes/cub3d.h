@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 11:41:26 by sokim             #+#    #+#             */
-/*   Updated: 2022/08/29 15:35:10 by sokim            ###   ########.fr       */
+/*   Updated: 2022/08/30 11:50:47 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct	s_map
 	int			height;
 	int			width;
 	char		**map;
+	char		*tmp;
 	char		**tex_files;
 	int			floor;
 	int			ceiling;

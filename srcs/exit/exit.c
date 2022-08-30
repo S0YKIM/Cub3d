@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 15:55:11 by sokim             #+#    #+#             */
-/*   Updated: 2022/08/30 11:16:29 by sokim            ###   ########.fr       */
+/*   Updated: 2022/08/30 12:41:07 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,18 @@ void	exit_with_free_all(char *msg, char *line, t_info *info)
 		}
 		free(info->map.map);
 	}
+	if (info && info->map.tmp)
+		free(info->map.tmp);
 	if (line)
 		free(line);
 	if (info && info->fd)
 		close(info->fd);
 	i = 0;
 	while (info && info->map.tex_files && info->map.tex_files[i])
+	{
 		free(info->map.tex_files[i]);
+		i++;
+	}
 	ft_putendl_fd("Error", 2);
 	ft_putendl_fd(msg, 2);
 	exit(EXIT_FAILURE);

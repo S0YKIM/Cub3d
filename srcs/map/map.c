@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 15:54:19 by sokim             #+#    #+#             */
-/*   Updated: 2022/08/30 11:06:27 by sokim            ###   ########.fr       */
+/*   Updated: 2022/08/30 12:36:28 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,25 +22,39 @@ static int	count_map_lines(char **map)
 	return (i);
 }
 
-static int	save_wall_texture(t_map *map, char *line)
+static int	save_wall_texture(t_info *info, char *line)
 {
+	int	direction;
+
+	direction = -1;
 	if (!ft_strncmp(line, "EA ", 3))
-		map->tex_files[FT_EAST] = ft_strdup(line + 3);
+		direction = FT_EAST;
 	else if (!ft_strncmp(line, "WE ", 3))
-		map->tex_files[FT_WEST] = ft_strdup(line + 3);
+		direction = FT_WEST;
 	else if (!ft_strncmp(line, "SO ", 3))
-		map->tex_files[FT_SOUTH] = ft_strdup(line + 3);
+		direction = FT_SOUTH;
 	else if (!ft_strncmp(line, "NO ", 3))
-		map->tex_files[FT_NORTH] = ft_strdup(line + 3);
+		direction = FT_NORTH;
+	if (info->map.tex_files[direction])
+		exit_with_free_all("Duplicated wall texture info.", line, info);
+	info->map.tex_files[direction] = ft_strdup(line + 3);
 	return (FT_TRUE);
 }
 
-static int	change_into_rgb_color(t_map *map, char *line, int *color)
+static int	change_into_rgb_color(t_info *info, char *line, int *color)
 {
 	if (!ft_strncmp(line, "F ", 2))
-		map->floor = color[0] << 16 | color[1] << 8 | color[2];
+	{
+		if (info->map.floor != -1)
+			exit_with_free_all("Duplicated floor color info.", line, info);
+		info->map.floor = color[0] << 16 | color[1] << 8 | color[2];
+	}
 	else if (!ft_strncmp(line, "C ", 2))
-		map->ceiling = color[0] << 16 | color[1] << 8 | color[2];
+	{
+		if (info->map.ceiling != -1)
+			exit_with_free_all("Duplicated ceiling color info.", line, info);
+		info->map.ceiling = color[0] << 16 | color[1] << 8 | color[2];
+	}
 	return (FT_TRUE);
 }
 
@@ -69,7 +83,7 @@ static int	check_floor_ceiling_color(t_info *info, char *line)
 	}
 	if (cnt != 2)
 		exit_with_free_all("Invalid color type.", line, info);
-	return (change_into_rgb_color(&info->map, line, color));
+	return (change_into_rgb_color(info, line, color));
 }
 
 static void	check_preconditions(t_map *map, t_info *info, char *line)
@@ -100,7 +114,7 @@ static int	check_map_contents(t_info *info, char *line)
 	if (line[0] == '\0' || line[0] == '\n')
 		return (FT_FALSE);
 	if (!ft_strncmp(line, "EA ", 3) || !ft_strncmp(line, "WE ", 3) || !ft_strncmp(line, "SO ", 3) || !ft_strncmp(line, "NO ", 3))
-		return (save_wall_texture(&info->map, line));
+		return (save_wall_texture(info, line));
 	else if (!ft_strncmp(line, "F ", 2) || !ft_strncmp(line, "C ", 2))
 		return (check_floor_ceiling_color(info, line));
 	while (line[i])
@@ -111,10 +125,10 @@ static int	check_map_contents(t_info *info, char *line)
 		i = 0;
 		while (line[i] && line[i] != '\n')
 			i++;
-		// if (!line[i])
-		// 	exit_with_free_all("Invalid map contents.", line, info);
 		if (i > info->map.width)
 			info->map.width = i;
+		info->map.tmp = ft_strjoin_free(info->map.tmp, line, 'L');
+		info->map.tmp = ft_strjoin_free(info->map.tmp, "\n", 'L');
 		if (info->map.start == 0)
 			info->map.start = info->map.end;
 	}
@@ -125,28 +139,25 @@ static void	read_map(t_info *info)
 {
 	int		ret;
 	char	*line;
-	char	*raw;
 	
 	ret = get_next_line(info->fd, &line);
-	raw = ft_strdup("");
 	while (ret)
 	{
 		if (ret == FT_ERROR)
 			exit_with_free_all("Cannot read the next line.", line, info);
-		raw = ft_strjoin_free(raw, line, 'L');
-		raw = ft_strjoin_free(raw, "\n", 'L');
 		info->map.end++;
 		printf("line: %s\n", line);
 		check_map_contents(info, line);
 		free(line);
 		ret = get_next_line(info->fd, &line);
 	}
-	info->map.height = info->map.end - info->map.start;
 	free(line);
+	info->map.height = info->map.end - info->map.start + 1;
 	if (info->map.height == 0)
 		exit_with_free_all("Empty map.", NULL, info);
-	info->map.map = ft_split(raw, '\n');
-	free(raw);
+	info->map.map = ft_split(info->map.tmp, '\n');
+	printf("count_map_lines: %i\n", count_map_lines(info->map.map));
+	printf("info->map.height: %i\n", info->map.height);
 	if (count_map_lines(info->map.map) != info->map.height)
 		exit_with_free_all("Wrong map.", NULL, info);
 }
@@ -160,7 +171,7 @@ static void	get_player_position(t_info *info)
 	while (i < info->map.height)
 	{
 		j = 0;
-		while (j < info->map.width)
+		while (info->map.map[i][j])
 		{
 			if (ft_strchr("EWSN", info->map.map[i][j]))
 			{
