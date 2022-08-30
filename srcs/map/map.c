@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 15:54:19 by sokim             #+#    #+#             */
-/*   Updated: 2022/08/30 12:01:54 by sokim            ###   ########.fr       */
+/*   Updated: 2022/08/30 12:36:28 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,9 +127,10 @@ static int	check_map_contents(t_info *info, char *line)
 			i++;
 		if (i > info->map.width)
 			info->map.width = i;
-		info->map.height++;
 		info->map.tmp = ft_strjoin_free(info->map.tmp, line, 'L');
 		info->map.tmp = ft_strjoin_free(info->map.tmp, "\n", 'L');
+		if (info->map.start == 0)
+			info->map.start = info->map.end;
 	}
 	return (FT_TRUE);
 }
@@ -151,9 +152,12 @@ static void	read_map(t_info *info)
 		ret = get_next_line(info->fd, &line);
 	}
 	free(line);
+	info->map.height = info->map.end - info->map.start + 1;
 	if (info->map.height == 0)
 		exit_with_free_all("Empty map.", NULL, info);
 	info->map.map = ft_split(info->map.tmp, '\n');
+	printf("count_map_lines: %i\n", count_map_lines(info->map.map));
+	printf("info->map.height: %i\n", info->map.height);
 	if (count_map_lines(info->map.map) != info->map.height)
 		exit_with_free_all("Wrong map.", NULL, info);
 }
@@ -167,7 +171,7 @@ static void	get_player_position(t_info *info)
 	while (i < info->map.height)
 	{
 		j = 0;
-		while (j < info->map.width)
+		while (info->map.map[i][j])
 		{
 			if (ft_strchr("EWSN", info->map.map[i][j]))
 			{
