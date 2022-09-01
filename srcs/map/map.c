@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 15:54:19 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/01 15:16:32 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/01 15:49:53 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ static void	read_map(t_info *info)
 	ret = get_next_line(info->fd, &line);
 	while (ret)
 	{
-		printf("line: %s\n", line);
 		if (ret == FT_ERROR)
 			exit_with_free_all("Cannot read the next line.", line, info);
 		info->map->end++;
@@ -76,6 +75,6 @@ static void	read_map(t_info *info)
 void	check_map_validation(t_info *info)
 {
 	read_map(info);
-	check_wall(info);
 	get_player_position(info);
+	check_wall(info);
 }
