@@ -6,48 +6,61 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 15:55:11 by sokim             #+#    #+#             */
-/*   Updated: 2022/08/30 16:42:39 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/01 11:19:12 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	free_line(char *line)
+static void	free_texfiles(t_map *map)
 {
-	if (line)
-		free(line);
+	int	i;
+
+	i = 0;
+	if (map->tex_files)
+	{
+		while (map->tex_files[i])
+		{
+			free(map->tex_files[i]);
+			i++;
+		}
+		free(map->tex_files);
+	}
+}
+
+static void	free_map(t_map *map)
+{
+	int	i;
+
+	i = 0;
+	if (map->map)
+	{
+		i = 0;
+		while (map->map[i])
+		{
+			free(map->map[i]);
+			i++;
+		}
+		free(map->map);
+	}
+	if (map->tmp)
+		free(map->tmp);
 }
 
 static void	free_info(t_info *info)
 {
-	int	i;
-
 	if (!info)
 		return ;
-	if (info->map.map)
-	{
-		i = 0;
-		while (info->map.map[i])
-		{
-			free(info->map.map[i]);
-			i++;
-		}
-		free(info->map.map);
-	}
-	if (info->map.tmp)
-		free(info->map.tmp);
 	if (info->fd)
 		close(info->fd);
-	while (info->map.tex_files && info->map.tex_files[i])
-	{
-		free(info->map.tex_files[i]);
-		i++;
-	}
+	free_map(&info->map);
+	free_texfiles(&info->map);
 }
 
 void	free_all(char *line, t_info *info)
 {
-	free_line(line);
+	if (line)
+		free(line);
 	free_info(info);
 }
 
