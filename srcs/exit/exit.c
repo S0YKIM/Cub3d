@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 15:55:11 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/01 11:19:12 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/01 15:32:55 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@ static void	free_texfiles(t_map *map)
 	i = 0;
 	if (map->tex_files)
 	{
-		while (map->tex_files[i])
+		while (i < 4)
 		{
-			free(map->tex_files[i]);
+			if (map->tex_files[i])
+				free(map->tex_files[i]);
 			i++;
 		}
 		free(map->tex_files);
@@ -40,28 +41,33 @@ static void	free_map(t_map *map)
 		{
 			free(map->map[i]);
 			i++;
-		}
+		}			
 		free(map->map);
 	}
-	if (map->tmp)
+	if (map->tmp)		
 		free(map->tmp);
 }
 
 static void	free_info(t_info *info)
 {
-	if (!info)
-		return ;
 	if (info->fd)
 		close(info->fd);
-	free_map(&info->map);
-	free_texfiles(&info->map);
+	if (info->map)
+	{
+		free_map(info->map);
+		free_texfiles(info->map);
+		free(info->map);
+	}
+	if (info->player)
+		free(info->player);
 }
 
 void	free_all(char *line, t_info *info)
 {
 	if (line)
 		free(line);
-	free_info(info);
+	if (info)
+		free_info(info);
 }
 
 void	exit_with_free_all(char *msg, char *line, t_info *info)

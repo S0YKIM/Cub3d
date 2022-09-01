@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 15:54:19 by sokim             #+#    #+#             */
-/*   Updated: 2022/08/30 16:34:39 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/01 15:16:32 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,32 @@ static int	count_map_lines(char **map)
 	return (i);
 }
 
+static void	get_player_position(t_info *info)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < info->map->height)
+	{
+		j = 0;
+		while (info->map->map[i][j])
+		{
+			if (ft_strchr("EWSN", info->map->map[i][j]))
+			{
+				info->player->x = j;
+				info->player->y = i;
+				info->player->direction = info->map->map[i][j];
+				info->map->num_of_player++;
+			}
+			j++;
+		}
+		i++;
+	}
+	if (info->map->num_of_player != 1)
+		exit_with_free_all("Invalid number of player.", NULL, info);
+}
+
 static void	read_map(t_info *info)
 {
 	int		ret;
@@ -30,46 +56,21 @@ static void	read_map(t_info *info)
 	ret = get_next_line(info->fd, &line);
 	while (ret)
 	{
+		printf("line: %s\n", line);
 		if (ret == FT_ERROR)
 			exit_with_free_all("Cannot read the next line.", line, info);
-		info->map.end++;
+		info->map->end++;
 		check_map_contents(info, line);
 		free(line);
 		ret = get_next_line(info->fd, &line);
 	}
 	free(line);
-	info->map.height = info->map.end - info->map.start + 1;
-	if (info->map.height == 0)
+	info->map->height = info->map->end - info->map->start + 1;
+	if (info->map->height == 0)
 		exit_with_free_all("Empty map.", NULL, info);
-	info->map.map = ft_split(info->map.tmp, '\n');
-	if (count_map_lines(info->map.map) != info->map.height)
+	info->map->map = ft_split(info->map->tmp, '\n');
+	if (count_map_lines(info->map->map) != info->map->height)
 		exit_with_free_all("Wrong map.", NULL, info);
-}
-
-static void	get_player_position(t_info *info)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < info->map.height)
-	{
-		j = 0;
-		while (info->map.map[i][j])
-		{
-			if (ft_strchr("EWSN", info->map.map[i][j]))
-			{
-				info->player.x = j;
-				info->player.y = i;
-				info->player.direction = info->map.map[i][j];
-				info->map.num_of_player++;
-			}
-			j++;
-		}
-		i++;
-	}
-	if (info->map.num_of_player != 1)
-		exit_with_free_all("Invalid number of player.", NULL, info);
 }
 
 void	check_map_validation(t_info *info)

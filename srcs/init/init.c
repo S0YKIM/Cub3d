@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 16:16:58 by sokim             #+#    #+#             */
-/*   Updated: 2022/08/30 11:51:56 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/01 14:49:50 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,12 @@ static void	init_map(t_info *info, t_map *map)
 void	init_info(t_info *info)
 {
 	info->fd = 0;
-	init_map(info, &info->map);
-	init_position(&info->player);
+	info->map = (t_map *)malloc(sizeof(t_map));
+	if (!info->map)
+		exit_with_free_all("Memory allocation failed.", NULL, info);
+	info->player = (t_position *)malloc(sizeof(t_position));
+	if (!info->player)
+		exit_with_free_all("Memory allocation failed.", NULL, info);
+	init_map(info, info->map);
+	init_position(info->player);
 }
