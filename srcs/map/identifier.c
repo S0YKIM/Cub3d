@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 16:22:14 by sokim             #+#    #+#             */
-/*   Updated: 2022/08/30 16:23:03 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/01 14:54:52 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ int	save_wall_texture(t_info *info, char *line)
 		direction = FT_SOUTH;
 	else if (!ft_strncmp(line, "NO ", 3))
 		direction = FT_NORTH;
-	if (info->map.tex_files[direction])
+	if (info->map->tex_files[direction])
 		exit_with_free_all("Duplicated wall texture info.", line, info);
-	info->map.tex_files[direction] = ft_strdup(line + 3);
+	info->map->tex_files[direction] = ft_strdup(line + 3);
 	return (FT_TRUE);
 }
 
@@ -35,15 +35,15 @@ static int	change_into_rgb_color(t_info *info, char *line, int *color)
 {
 	if (!ft_strncmp(line, "F ", 2))
 	{
-		if (info->map.floor != -1)
+		if (info->map->floor != -1)
 			exit_with_free_all("Duplicated floor color info.", line, info);
-		info->map.floor = color[0] << 16 | color[1] << 8 | color[2];
+		info->map->floor = color[0] << 16 | color[1] << 8 | color[2];
 	}
 	else if (!ft_strncmp(line, "C ", 2))
 	{
-		if (info->map.ceiling != -1)
+		if (info->map->ceiling != -1)
 			exit_with_free_all("Duplicated ceiling color info.", line, info);
-		info->map.ceiling = color[0] << 16 | color[1] << 8 | color[2];
+		info->map->ceiling = color[0] << 16 | color[1] << 8 | color[2];
 	}
 	return (FT_TRUE);
 }
