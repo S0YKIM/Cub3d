@@ -6,19 +6,26 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 16:53:35 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/02 13:43:30 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/02 18:19:40 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
 
-typedef struct s_position
+typedef struct s_vector
 {
-	int		x;
-	int		y;
-	char	direction;
-}	t_position;
+	double		x;
+	double		y;
+}	t_vector;
+
+typedef struct s_player
+{
+	char		direction;
+	t_vector	pos;
+	t_vector	dir;
+	t_vector	plane;
+}	t_player;
 
 typedef struct s_map
 {
@@ -41,7 +48,7 @@ typedef struct s_info
 	void		*mlx;
 	void		*window;
 	t_map		*map;
-	t_position	*player;
+	t_player	*player;
 }	t_info;
 
 #endif
