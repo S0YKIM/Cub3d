@@ -6,17 +6,21 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 16:16:58 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/02 12:06:03 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/02 18:36:33 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	init_position(t_position *player)
+static void	init_player(t_player *player)
 {
-	player->x = -1;
-	player->y = -1;
-	player->direction = -1;
+	player->direction = 'N';
+	player->pos.x = -1;
+	player->pos.y = -1;
+	player->dir.x = 0;
+	player->dir.y = -1;
+	player->plane.x = 0.66;
+	player->plane.y = 0;
 }
 
 static void	init_map(t_info *info, t_map *map)
@@ -46,9 +50,9 @@ void	init_info(t_info *info)
 	info->map = (t_map *)malloc(sizeof(t_map));
 	if (!info->map)
 		exit_with_free_all("Memory allocation failed.", NULL, info);
-	info->player = (t_position *)malloc(sizeof(t_position));
+	info->player = (t_player *)malloc(sizeof(t_player));
 	if (!info->player)
 		exit_with_free_all("Memory allocation failed.", NULL, info);
 	init_map(info, info->map);
-	init_position(info->player);
+	init_player(info->player);
 }
