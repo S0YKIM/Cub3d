@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 11:41:26 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/02 15:38:55 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/02 18:24:47 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include "mlx.h"
 # include <stdio.h>
 # include <fcntl.h>
+# include <math.h>
 
 /*
  * Init functions
@@ -51,5 +52,11 @@ int		exit_with_button_close(t_info *info);
  */
 int		key_down(int keycode, t_info *info);
 int		key_up(int keycode, t_info *info);
+
+/*
+ * Calculate functions
+ */
+void	rotate_vector(t_player *player, int angle);
+void	rotate_player(t_player *player, char direction);
 
 #endif
