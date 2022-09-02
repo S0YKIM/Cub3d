@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 16:54:10 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/02 13:46:45 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/02 14:51:25 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,16 @@
 # define WINDOW_HEIGHT 960
 
 /*
- * Key code
+ * Event code
  */
 # define KEY_PRESS 2
+# define KEY_RELEASE 3
+# define BUTTON_PRESS 4
+# define BUTTON_RELEASE 5
+
+/*
+ * Key code
+ */
 # define KEY_ESC 53
 # define KEY_W 13
 # define KEY_A 0
