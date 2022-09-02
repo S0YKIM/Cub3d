@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 15:54:19 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/01 15:49:53 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/02 18:28:07 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,15 @@ static int	count_map_lines(char **map)
 	return (i);
 }
 
+static void	set_player_info(t_info *info, char direction, int i, int j)
+{
+	info->player->direction = direction;
+	info->player->pos.x = j;
+	info->player->pos.y = i;
+	rotate_player(info->player, direction);
+	info->map->num_of_player++;
+}
+
 static void	get_player_position(t_info *info)
 {
 	int	i;
@@ -34,12 +43,7 @@ static void	get_player_position(t_info *info)
 		while (info->map->map[i][j])
 		{
 			if (ft_strchr("EWSN", info->map->map[i][j]))
-			{
-				info->player->x = j;
-				info->player->y = i;
-				info->player->direction = info->map->map[i][j];
-				info->map->num_of_player++;
-			}
+				set_player_info(info, info->map->map[i][j], i, j);
 			j++;
 		}
 		i++;
