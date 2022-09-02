@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 15:55:11 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/01 15:32:55 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/02 11:30:28 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	free_map(t_map *map)
 		}			
 		free(map->map);
 	}
-	if (map->tmp)		
+	if (map->tmp)
 		free(map->tmp);
 }
 

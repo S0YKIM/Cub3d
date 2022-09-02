@@ -6,18 +6,21 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 16:53:35 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/01 14:47:33 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/02 11:32:45 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-typedef struct	s_position
+#ifndef STRUCT_H
+# define STRUCT_H
+
+typedef struct s_position
 {
 	int		x;
 	int		y;
 	char	direction;
-}				t_position;
+}	t_position;
 
-typedef struct	s_map
+typedef struct s_map
 {
 	int			height;
 	int			width;
@@ -30,11 +33,13 @@ typedef struct	s_map
 	int			start;
 	int			end;
 	int			flag;
-}				t_map;
+}	t_map;
 
-typedef struct	s_info
+typedef struct s_info
 {
 	int			fd;
 	t_map		*map;
 	t_position	*player;
-}				t_info;
+}	t_info;
+
+#endif
