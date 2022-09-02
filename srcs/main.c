@@ -6,11 +6,22 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 11:35:09 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/01 15:33:32 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/02 13:46:55 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static void	init_mlx(t_info *info)
+{
+	info->mlx = mlx_init();
+	if (!info->mlx)
+		exit_with_free_all("Failed to initialize mlx.", NULL, info);
+	info->window = mlx_new_window(info->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "cub3d");
+	if (!info->window)
+		exit_with_free_all("Failed to initialize window.", NULL, info);
+	mlx_hook(info->window, BUTTON_CLOSE, 0, &exit_with_button_close, info);
+}
 
 static void	open_file_name(char *path, t_info *info)
 {
@@ -30,6 +41,8 @@ int	main(int argc, char **argv)
 		exit_with_free_all("Invalid number of arguments.", NULL, &info);
 	init_info(&info);
 	open_file_name(argv[1], &info);
+	init_mlx(&info);
+	mlx_loop(info.mlx);
 	free_all(NULL, &info);
 	return (0);
 }

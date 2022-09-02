@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 16:16:58 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/01 14:49:50 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/02 12:06:03 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ static void	init_map(t_info *info, t_map *map)
 void	init_info(t_info *info)
 {
 	info->fd = 0;
+	info->mlx = NULL;
+	info->window = NULL;
 	info->map = (t_map *)malloc(sizeof(t_map));
 	if (!info->map)
 		exit_with_free_all("Memory allocation failed.", NULL, info);

@@ -6,7 +6,7 @@
 #    By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/28 11:32:01 by sokim             #+#    #+#              #
-#    Updated: 2022/08/30 16:24:01 by sokim            ###   ########.fr        #
+#    Updated: 2022/09/02 13:39:48 by sokim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ SRCS = srcs/main.c \
 		srcs/map/map.c \
 		srcs/map/check.c \
 		srcs/map/wall.c \
-		srcs/map/identifier.c
+		srcs/map/identifier.c \
+		srcs/mlx/exit.c
 
 OBJS = $(SRCS:.c=.o)
 OBJS_B = $(SRCS_B:.c=.o)

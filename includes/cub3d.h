@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 11:41:26 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/02 11:34:19 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/02 13:47:32 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "get_next_line.h"
 # include "struct.h"
 # include "macro.h"
+# include "mlx.h"
 # include <stdio.h>
 # include <fcntl.h>
 
@@ -43,5 +44,6 @@ int		save_floor_ceiling_color(t_info *info, char *line);
  */
 void	free_all(char *line, t_info *info);
 void	exit_with_free_all(char *msg, char *line, t_info *info);
+int		exit_with_button_close(t_info *info);
 
 #endif
