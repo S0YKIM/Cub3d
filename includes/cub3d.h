@@ -6,12 +6,12 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 11:41:26 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/01 15:00:37 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/02 11:34:19 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB_3D_H
-# define CUB_3D_H
+#ifndef CUB3D_H
+# define CUB3D_H
 
 # include "libft.h"
 # include "get_next_line.h"
@@ -35,8 +35,8 @@ void	check_wall(t_info *info);
 /*
  * Identifier functions
  */
-int	save_wall_texture(t_info *info, char *line);
-int	save_floor_ceiling_color(t_info *info, char *line);
+int		save_wall_texture(t_info *info, char *line);
+int		save_floor_ceiling_color(t_info *info, char *line);
 
 /*
  * Exit functions
