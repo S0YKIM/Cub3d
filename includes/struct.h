@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 16:53:35 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/02 18:19:40 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/04 12:17:46 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,19 @@ typedef struct s_vector
 	double		y;
 }	t_vector;
 
+typedef struct s_key
+{
+	int			wasd[4];
+	double		arrow;
+}	t_key;
+
 typedef struct s_player
 {
 	char		direction;
 	t_vector	pos;
 	t_vector	dir;
 	t_vector	plane;
+	t_key		key;
 }	t_player;
 
 typedef struct s_map
