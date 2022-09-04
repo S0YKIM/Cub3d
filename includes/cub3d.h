@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 11:41:26 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/02 18:24:47 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/04 15:09:55 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include <math.h>
+# include <stdbool.h>
 
 /*
  * Init functions
@@ -58,5 +59,10 @@ int		key_up(int keycode, t_info *info);
  */
 void	rotate_vector(t_player *player, int angle);
 void	rotate_player(t_player *player, char direction);
+
+/*
+ * Manipulate player functions
+ */
+void	set_player_position(t_info *info);
 
 #endif
