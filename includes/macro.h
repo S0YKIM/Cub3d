@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 16:54:10 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/02 14:51:25 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/04 12:08:45 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,10 @@
 # define KEY_LEFT 123
 # define KEY_RIGHT 124
 # define BUTTON_CLOSE 17
+
+/*
+ * Player movement
+ */
+# define PLAYER_SPEED 0.6
 
 #endif
