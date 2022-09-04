@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 11:41:26 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/04 15:09:55 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/04 17:30:19 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,10 @@ void	rotate_player(t_player *player, char direction);
  * Manipulate player functions
  */
 void	set_player_position(t_info *info);
+
+/*
+ * Drawing functions
+ */
+void	draw_frame(t_info *info);
 
 #endif
