@@ -6,7 +6,7 @@
 #    By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/28 11:32:01 by sokim             #+#    #+#              #
-#    Updated: 2022/09/04 15:09:08 by sokim            ###   ########.fr        #
+#    Updated: 2022/09/04 17:40:13 by sokim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ SRCS = srcs/main.c \
 		srcs/mlx/exit.c \
 		srcs/mlx/keyhook.c \
 		srcs/math/rotate.c \
-		srcs/map/player.c
+		srcs/map/player.c \
+		srcs/mlx/draw.c
 
 OBJS = $(SRCS:.c=.o)
 OBJS_B = $(SRCS_B:.c=.o)

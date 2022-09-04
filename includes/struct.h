@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 16:53:35 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/04 15:04:34 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/04 17:04:14 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,17 @@ typedef struct s_map
 	int			flag;
 }	t_map;
 
+typedef struct	s_img
+{
+	void	*img;
+	char	*data;
+	int		line_length;
+	int		bpp;
+	int		endian;
+	int		width;
+	int		height;
+}	t_img;
+
 typedef struct s_info
 {
 	int			fd;
@@ -56,6 +67,7 @@ typedef struct s_info
 	void		*window;
 	t_map		*map;
 	t_player	*player;
+	t_img		*img;
 }	t_info;
 
 #endif
