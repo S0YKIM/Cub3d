@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 13:39:25 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/02 13:44:37 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/04 18:00:35 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,12 @@ int	exit_with_button_close(t_info *info)
 {
 	ft_putendl_fd("You quit the game.", 2);
 	free_all(NULL, info);
-	mlx_destroy_window(info->mlx, info->window);
-	// mlx_destroy_image();
+	if (info->window)
+		mlx_destroy_window(info->mlx, info->window);
+	if (info->img->img)
+		mlx_destroy_image(info->mlx, info->img->img);
+	if (info->img)
+		free(info->img);
 	exit(EXIT_SUCCESS);
 	return (1);
 }
