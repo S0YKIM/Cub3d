@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 15:54:19 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/02 18:28:07 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/04 11:44:52 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ static int	count_map_lines(char **map)
 static void	set_player_info(t_info *info, char direction, int i, int j)
 {
 	info->player->direction = direction;
-	info->player->pos.x = j;
-	info->player->pos.y = i;
+	info->player->pos.x = j + 0.5;
+	info->player->pos.y = i + 0.5;
 	rotate_player(info->player, direction);
 	info->map->num_of_player++;
 }
