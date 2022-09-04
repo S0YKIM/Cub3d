@@ -6,11 +6,21 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 16:16:58 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/02 18:36:33 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/04 17:40:05 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static void	init_mlx(t_info *info)
+{
+	info->mlx = mlx_init();
+	if (!info->mlx)
+		exit_with_free_all("Failed to initialize mlx.", NULL, info);
+	info->window = mlx_new_window(info->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "cub3d");
+	if (!info->window)
+		exit_with_free_all("Failed to initialize window.", NULL, info);
+}
 
 static void	init_player(t_player *player)
 {
@@ -42,6 +52,18 @@ static void	init_map(t_info *info, t_map *map)
 	map->flag = 0;
 }
 
+static void	init_image(t_info *info, t_img *img)
+{
+	img->img = mlx_new_image(info->mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
+	if (!img->img)
+		exit_with_free_all("Image creation failed.", NULL, info);
+	img->data = (char *)mlx_get_data_addr(img->img, &img->bpp, &img->line_length, &img->endian);
+	if (!img->data)
+		exit_with_free_all("Failed to get image address.", NULL, info);
+	img->width = 32;
+	img->height = 32;
+}
+
 void	init_info(t_info *info)
 {
 	info->fd = 0;
@@ -53,6 +75,11 @@ void	init_info(t_info *info)
 	info->player = (t_player *)malloc(sizeof(t_player));
 	if (!info->player)
 		exit_with_free_all("Memory allocation failed.", NULL, info);
+	info->img = (t_img *)malloc(sizeof(t_img));
+	if (!info->img)
+		exit_with_free_all("Memory allocation failed.", NULL, info);
 	init_map(info, info->map);
 	init_player(info->player);
+	init_mlx(info);
+	init_image(info, info->img);
 }
