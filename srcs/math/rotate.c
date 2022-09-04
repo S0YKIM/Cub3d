@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 18:03:24 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/02 18:24:51 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/04 15:02:54 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 static void	calc_rotated_vector(t_vector *vector, int angle)
 {
+	if (!angle)
+		return ;
 	vector->x = vector->x * cos(angle * M_PI / 180) - vector->y * sin(angle * M_PI / 180);
 	vector->y = vector->x * sin(angle * M_PI / 180) + vector->y * cos(angle * M_PI / 180);
 }

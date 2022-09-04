@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 11:35:09 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/02 14:28:59 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/04 15:08:47 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ static void	init_mlx(t_info *info)
 	info->window = mlx_new_window(info->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "cub3d");
 	if (!info->window)
 		exit_with_free_all("Failed to initialize window.", NULL, info);
+	set_player_position(info);
+	// draw_image()
 	mlx_hook(info->window, KEY_PRESS, 0, &key_down, info);
 	mlx_hook(info->window, KEY_RELEASE, 0, &key_up, info);
 	mlx_hook(info->window, BUTTON_CLOSE, 0, &exit_with_button_close, info);
