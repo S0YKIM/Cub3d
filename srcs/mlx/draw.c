@@ -6,23 +6,11 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 16:25:08 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/05 15:51:20 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/05 16:17:21 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-static void	verLine(t_info *info, int x, int y1, int y2, int color)
-{
-	int	y;
-
-	y = y1;
-	while (y <= y2)
-	{
-		mlx_pixel_put(info->mlx, info->window, x, y, color);
-		y++;
-	}
-}
 
 static void	draw_line(t_info *info, t_dda *dda, int w)
 {
@@ -31,8 +19,13 @@ static void	draw_line(t_info *info, t_dda *dda, int w)
 	int	color;
 
 	calc_line_height(&start, &end, dda);
-	color = 13145800;
-	verLine(info, w, start, end, color);
+	color = (200 << 16) | (150 << 8) | (200);
+	while (start < end)
+	{
+		*(unsigned int *)(info->img->data + start * info->img->line_length + w * info->img->bpp / 8) \
+			= color;
+		start++;
+	}
 }
 
 static void	draw_wall(t_info *info)
@@ -47,6 +40,7 @@ static void	draw_wall(t_info *info)
 		find_wall_hit(&dda, info);
 		set_perp_wall_dist(&dda, info->player);
 		draw_line(info, &dda, w);
+		w++;
 	}
 }
 
@@ -77,6 +71,6 @@ void	draw_frame(t_info *info)
 {
 	set_player_position(info);
 	draw_ceiling_floor(info->img, info->map);
-	// draw_wall(info);
+	draw_wall(info);
 	mlx_put_image_to_window(info->mlx, info->window, info->img->img, 0, 0);
 }

@@ -6,14 +6,14 @@
 #    By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/28 11:32:01 by sokim             #+#    #+#              #
-#    Updated: 2022/09/05 15:51:43 by sokim            ###   ########.fr        #
+#    Updated: 2022/09/05 16:26:48 by sokim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3d
 
 CC = gcc
-CFLAGS = 
+CFLAGS = -Wall -Wextra -Werror
 
 SRCS = srcs/main.c \
 		srcs/init/info.c \
