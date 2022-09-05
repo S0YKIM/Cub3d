@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit.c                                             :+:      :+:    :+:   */
+/*   line.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/02 13:39:25 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/04 18:00:35 by sokim            ###   ########.fr       */
+/*   Created: 2022/09/05 15:21:10 by sokim             #+#    #+#             */
+/*   Updated: 2022/09/05 15:45:29 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	exit_with_button_close(t_info *info)
+void	calc_line_height(int *start, int *end, t_dda *dda)
 {
-	ft_putendl_fd("You quit the game.", 2);
-	free_all(NULL, info);
-	if (info->window)
-		mlx_destroy_window(info->mlx, info->window);
-	if (info->img->img)
-		mlx_destroy_image(info->mlx, info->img->img);
-	if (info->img)
-		free(info->img);
-	exit(EXIT_SUCCESS);
-	return (1);
+	int	line_height;
+
+	line_height = (int)(WINDOW_HEIGHT / dda->perp_wall_dist);
+	*start = WINDOW_HEIGHT / 2 - line_height / 2;
+	if (*start < 0)
+		*start = 0;
+	*end = line_height / 2 + WINDOW_HEIGHT / 2;
+	if (*end >= WINDOW_HEIGHT)
+		*end = WINDOW_HEIGHT - 1;
 }
