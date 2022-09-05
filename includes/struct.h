@@ -6,12 +6,14 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 16:53:35 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/04 17:04:14 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/05 13:56:07 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
+
+# include <stdbool.h>
 
 typedef struct s_vector
 {
@@ -49,7 +51,7 @@ typedef struct s_map
 	int			flag;
 }	t_map;
 
-typedef struct	s_img
+typedef struct s_img
 {
 	void	*img;
 	char	*data;
@@ -59,6 +61,24 @@ typedef struct	s_img
 	int		width;
 	int		height;
 }	t_img;
+
+typedef struct s_dda
+{
+	double	camera_x;
+	double	ray_dir_x;
+	double	ray_dir_y;
+	int		map_x;
+	int		map_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	int		step_x;
+	int		step_y;
+	bool	is_hit;
+	int		hit_side;
+	double	perp_wall_dist;
+}	t_dda;
 
 typedef struct s_info
 {
