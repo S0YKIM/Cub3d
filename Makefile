@@ -6,27 +6,31 @@
 #    By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/28 11:32:01 by sokim             #+#    #+#              #
-#    Updated: 2022/09/04 17:40:13 by sokim            ###   ########.fr        #
+#    Updated: 2022/09/05 15:51:43 by sokim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3d
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = 
 
 SRCS = srcs/main.c \
-		srcs/init/init.c \
-		srcs/exit/exit.c \
+		srcs/init/info.c \
+		srcs/exit/mlx.c \
+		srcs/exit/program.c \
 		srcs/map/map.c \
 		srcs/map/check.c \
 		srcs/map/wall.c \
 		srcs/map/identifier.c \
-		srcs/mlx/exit.c \
 		srcs/mlx/keyhook.c \
 		srcs/math/rotate.c \
 		srcs/map/player.c \
-		srcs/mlx/draw.c
+		srcs/mlx/draw.c \
+		srcs/dda/set.c \
+		srcs/dda/hit.c \
+		srcs/dda/perp.c \
+		srcs/dda/line.c
 
 OBJS = $(SRCS:.c=.o)
 OBJS_B = $(SRCS_B:.c=.o)
