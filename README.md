@@ -93,3 +93,12 @@ C project to make 3D game using ray-caster
 #### To-do
 - 조작키를 눌러도 플레이어가 움직이지 않는 문제 해결
 - 텍스처링 구현(Textured raycasting)
+
+### 9월 6일(화)
+#### Done
+- W, A, S, D 를 누르면 플레이어가 움직이도록 문제 해결
+- 화살표 키를 누르면 플레이어가 회전하도록 문제 해결
+- 매번 루프가 실행될 때마다 프레임을 그리도록 구현
+#### To-do
+- 화면에 벽이 제대로 그려지지 않는 문제 해결
+- 텍스처링 구현(Textured raycasting)
