@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 16:54:10 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/05 14:26:48 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/06 11:56:49 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@
 /*
  * Player movement
  */
-# define PLAYER_SPEED 0.6
+# define PLAYER_MOVE_SPEED 0.06
+# define PLAYER_ROTATE_SPEED 5
 
 /*
  * DDA
