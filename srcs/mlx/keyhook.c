@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 14:30:59 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/06 11:21:34 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/06 11:57:23 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ static int	move_player_position(int keycode, t_info *info, int value)
 static int	move_direction_vector(int keycode, t_info *info)
 {
 	if (keycode == KEY_LEFT)
-		info->player->key.arrow = -PLAYER_SPEED;
+		info->player->key.arrow = -PLAYER_ROTATE_SPEED;
 	if (keycode == KEY_RIGHT)
-		info->player->key.arrow = PLAYER_SPEED;
+		info->player->key.arrow = PLAYER_ROTATE_SPEED;
 	return (FT_TRUE);
 }
 
