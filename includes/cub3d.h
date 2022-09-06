@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 11:41:26 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/05 15:46:04 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/06 11:30:51 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	set_player_position(t_info *info);
 /*
  * Drawing functions
  */
-void	draw_frame(t_info *info);
+int		draw_frame(t_info *info);
 
 /*
  * DDA functions
