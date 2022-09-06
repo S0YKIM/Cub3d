@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 16:25:08 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/05 16:17:21 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/06 11:30:35 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,11 @@ static void	draw_ceiling_floor(t_img *img, t_map *map)
 	}
 }
 
-void	draw_frame(t_info *info)
+int	draw_frame(t_info *info)
 {
 	set_player_position(info);
 	draw_ceiling_floor(info->img, info->map);
 	draw_wall(info);
 	mlx_put_image_to_window(info->mlx, info->window, info->img->img, 0, 0);
+	return (0);
 }

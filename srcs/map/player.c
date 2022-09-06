@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 13:59:45 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/04 15:12:47 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/06 11:58:02 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static bool	is_edge(char **map, t_player *player, t_vector *next)
 {
-	int	x;
-	int	y;
+	int			x;
+	int			y;
 
 	x = (int)next->x;
 	y = (int)next->y;
@@ -27,7 +27,7 @@ static bool	is_edge(char **map, t_player *player, t_vector *next)
 		return (map[y - 1][x] == '1' && map[y][x + 1] == '1');
 	else if (player->dir.x > 0 && player->dir.y > 0)
 		return (map[y - 1][x] == '1' && map[y][x - 1] == '1');
-	return (FT_TRUE);
+	return (FT_FALSE);
 }
 
 static bool	is_available_to_move(t_map *map, t_player *player, t_vector *next)
@@ -62,23 +62,23 @@ static void	get_amount_to_move(t_info *info, t_vector *delta)
 {
 	if (info->player->key.wasd[FT_EAST])
 	{
-		delta->x += info->player->plane.x * PLAYER_SPEED;
-		delta->y += info->player->plane.y * PLAYER_SPEED;
+		delta->x += info->player->plane.x * PLAYER_MOVE_SPEED;
+		delta->y += info->player->plane.y * PLAYER_MOVE_SPEED;
 	}
 	if (info->player->key.wasd[FT_WEST])
 	{
-		delta->x += info->player->plane.x * PLAYER_SPEED * -1;
-		delta->y += info->player->plane.y * PLAYER_SPEED * -1;
+		delta->x += info->player->plane.x * PLAYER_MOVE_SPEED * -1;
+		delta->y += info->player->plane.y * PLAYER_MOVE_SPEED * -1;
 	}
 	if (info->player->key.wasd[FT_NORTH])
 	{
-		delta->x += info->player->dir.x * PLAYER_SPEED;
-		delta->y += info->player->dir.y * PLAYER_SPEED;
+		delta->x += info->player->dir.x * PLAYER_MOVE_SPEED;
+		delta->y += info->player->dir.y * PLAYER_MOVE_SPEED;
 	}
 	if (info->player->key.wasd[FT_SOUTH])
 	{
-		delta->x += info->player->dir.x * PLAYER_SPEED * -1;
-		delta->y += info->player->dir.y * PLAYER_SPEED * -1;
+		delta->x += info->player->dir.x * PLAYER_MOVE_SPEED * -1;
+		delta->y += info->player->dir.y * PLAYER_MOVE_SPEED * -1;
 	}
 }
 
@@ -89,6 +89,6 @@ void	set_player_position(t_info *info)
 	delta.x = 0;
 	delta.y = 0;
 	get_amount_to_move(info, &delta);
-	rotate_vector(info->player, info->player->key.arrow);
 	move_player(info, &delta);
+	rotate_vector(info->player, info->player->key.arrow);
 }
