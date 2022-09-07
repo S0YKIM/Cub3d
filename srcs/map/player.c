@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 13:59:45 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/06 11:58:02 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/07 12:15:37 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ static bool	is_edge(char **map, t_player *player, t_vector *next)
 
 static bool	is_available_to_move(t_map *map, t_player *player, t_vector *next)
 {
-	if (next->x < 0 || next->x >= map->width)
+	if (next->x <= 0 || next->x >= map->width - 1)
 		return (FT_FALSE);
-	if (next->y < 0 || next->y >= map->height)
+	if (next->y <= 0 || next->y >= map->height - 1)
 		return (FT_FALSE);
 	if (map->map[(int)next->y][(int)next->x] == '1')
 		return (FT_FALSE);
