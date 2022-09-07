@@ -6,13 +6,13 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 15:21:10 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/05 15:45:29 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/07 21:11:19 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	calc_line_height(int *start, int *end, t_dda *dda)
+int	calc_line_height(int *start, int *end, t_dda *dda)
 {
 	int	line_height;
 
@@ -23,4 +23,5 @@ void	calc_line_height(int *start, int *end, t_dda *dda)
 	*end = line_height / 2 + WINDOW_HEIGHT / 2;
 	if (*end >= WINDOW_HEIGHT)
 		*end = WINDOW_HEIGHT - 1;
+	return (line_height);
 }
