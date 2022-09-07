@@ -1,0 +1,13 @@
+NO ./textures/blue.xpm
+SO ./textures/green.xpm
+WE ./textures/cream.xpm
+EA ./textures/grey.xpm
+
+F 0,255,0
+C 0,0,255
+
+11111
+10001
+10N01
+10001
+11111
