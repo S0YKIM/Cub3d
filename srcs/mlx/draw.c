@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 16:25:08 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/07 16:09:39 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/07 21:11:00 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,17 @@ static void	draw_line(t_info *info, t_dda *dda, int w)
 	int	start;
 	int	end;
 	int	color;
+	int	line_height;
 
-	calc_line_height(&start, &end, dda);
-	color = (200 << 16) | (150 << 8) | (200);
-	while (start < end)
-	{
-		*(unsigned int *)(info->img->data + start * info->img->line_length + w * info->img->bpp / 8) \
-			= color;
-		start++;
-	}
+	line_height = calc_line_height(&start, &end, dda);
+	
+	// color = (200 << 16) | (150 << 8) | (200);
+	// while (start < end)
+	// {
+	// 	*(unsigned int *)(info->img->data + start * info->img->line_length + w * info->img->bpp / 8) \
+	// 		= color;
+	// 	start++;
+	// }
 }
 
 static void	draw_wall(t_info *info)
