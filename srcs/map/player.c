@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 13:59:45 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/07 12:15:37 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/07 12:43:28 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ static bool	is_edge(char **map, t_player *player, t_vector *next)
 
 	x = (int)next->x;
 	y = (int)next->y;
+	if (x == (int)player->pos.x && y == (int)player->pos.y)
+		return (FT_FALSE);
 	if (player->dir.x < 0 && player->dir.y < 0)
 		return (map[y + 1][x] == '1' && map[y][x + 1] == '1');
 	else if (player->dir.x > 0 && player->dir.y < 0)
