@@ -1,7 +1,7 @@
-NO ./textures/blue.xpm
-SO ./textures/green.xpm
-WE ./textures/cream.xpm
-EA ./textures/grey.xpm
+NO ./textures/texture1.xpm
+SO ./textures/texture2.xpm
+WE ./textures/texture3.xpm
+EA ./textures/texture4.xpm
 
 F 0,255,0
 C 0,0,255

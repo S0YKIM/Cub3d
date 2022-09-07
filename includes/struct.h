@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 16:53:35 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/05 13:56:07 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/07 16:00:04 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,21 +36,6 @@ typedef struct s_player
 	t_key		key;
 }	t_player;
 
-typedef struct s_map
-{
-	int			height;
-	int			width;
-	char		**map;
-	char		*tmp;
-	char		**tex_files;
-	int			floor;
-	int			ceiling;
-	int			num_of_player;
-	int			start;
-	int			end;
-	int			flag;
-}	t_map;
-
 typedef struct s_img
 {
 	void	*img;
@@ -61,6 +46,22 @@ typedef struct s_img
 	int		width;
 	int		height;
 }	t_img;
+
+typedef struct s_map
+{
+	int			height;
+	int			width;
+	char		**map;
+	char		*tmp;
+	char		**tex_files;
+	t_img		textures[4];
+	int			floor;
+	int			ceiling;
+	int			num_of_player;
+	int			start;
+	int			end;
+	int			flag;
+}	t_map;
 
 typedef struct s_dda
 {

@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 11:41:26 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/06 11:30:51 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/07 20:44:26 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ int		save_floor_ceiling_color(t_info *info, char *line);
 void	free_all(char *line, t_info *info);
 void	exit_with_free_all(char *msg, char *line, t_info *info);
 int		exit_with_button_close(t_info *info);
+int		exit_with_mlx_error(char *msg, t_info *info);
+int		exit_mlx(t_info *info);
 
 /*
  * Hook functions
@@ -78,4 +80,8 @@ void	find_wall_hit(t_dda *dda, t_info *info);
 void	set_perp_wall_dist(t_dda *dda, t_player *player);
 void	calc_line_height(int *start, int *end, t_dda *dda);
 
+/*
+ * Texturing functions
+ */
+void	init_texture(t_info *info);
 #endif
