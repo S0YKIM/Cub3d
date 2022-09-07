@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   info.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 16:16:58 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/04 17:40:05 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/07 14:23:23 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ static void	init_mlx(t_info *info)
 
 static void	init_player(t_player *player)
 {
+	int	i;
+
+	i = 0;
 	player->direction = 'N';
 	player->pos.x = -1;
 	player->pos.y = -1;
@@ -31,6 +34,9 @@ static void	init_player(t_player *player)
 	player->dir.y = -1;
 	player->plane.x = 0.66;
 	player->plane.y = 0;
+	while (i < 4)
+		player->key.wasd[i++] = 0;
+	player->key.arrow = 0;
 }
 
 static void	init_map(t_info *info, t_map *map)
