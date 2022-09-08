@@ -6,7 +6,7 @@
 #    By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/28 11:32:01 by sokim             #+#    #+#              #
-#    Updated: 2022/09/07 20:42:49 by sokim            ###   ########.fr        #
+#    Updated: 2022/09/08 12:31:37 by sokim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,8 @@ SRCS = srcs/main.c \
 		srcs/dda/hit.c \
 		srcs/dda/perp.c \
 		srcs/dda/line.c \
-		srcs/init/texture.c
+		srcs/init/texture.c \
+		srcs/mlx/texture.c
 
 OBJS = $(SRCS:.c=.o)
 OBJS_B = $(SRCS_B:.c=.o)

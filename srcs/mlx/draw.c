@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 16:25:08 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/07 16:09:39 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/08 14:28:36 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,25 @@
 
 static void	draw_line(t_info *info, t_dda *dda, int w)
 {
-	int	start;
-	int	end;
-	int	color;
+	int			start;
+	int			end;
+	t_texture	tex;
+	t_img		*src;
+	t_img		*dst;
 
-	calc_line_height(&start, &end, dda);
-	color = (200 << 16) | (150 << 8) | (200);
+	calc_texture_offset(info, dda, &tex, &start, &end);
+	tex.num = find_tex_num(dda);
+	dst = info->img;
+	src = &info->map->textures[tex.num];
 	while (start < end)
 	{
-		*(unsigned int *)(info->img->data + start * info->img->line_length + w * info->img->bpp / 8) \
-			= color;
+		tex.y = (int)tex.pos & (TEXTURE_HEIGHT - 1);
+		tex.pos += tex.step;
+		tex.color = *(unsigned int *)(src->data + tex.y * src->line_length + tex.x * src->bpp / 8);
+		if (dda->hit_side == HIT_Y)
+			tex.color = (tex.color >> 1) & 8355711;
+		*(unsigned int *)(dst->data + start * dst->line_length + w * dst->bpp / 8) \
+			= tex.color;
 		start++;
 	}
 }

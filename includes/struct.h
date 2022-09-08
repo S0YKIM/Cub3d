@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 16:53:35 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/07 16:00:04 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/08 13:48:59 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,22 @@ typedef struct s_vector
 	double		x;
 	double		y;
 }	t_vector;
+
+typedef struct s_point
+{
+	int			x;
+	int			y;
+}	t_point;
+
+typedef struct s_texture
+{
+	int			x;
+	int			y;
+	double		step;
+	double		pos;
+	int			num;
+	uint32_t	color;
+}	t_texture;
 
 typedef struct s_key
 {
