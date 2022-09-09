@@ -6,56 +6,11 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 16:25:08 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/09 12:17:05 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/09 12:37:40 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
-
-static void	draw_square(t_img *img, int x, int y, int color)
-{
-	int i;
-	int j;
-	int size;
-	j = 0;
-	size = 8;
-	while (j < size)
-	{
-		i = 0;
-		while (i < size)
-		{
-			*(unsigned int *)(img->data + (size * x + j) * img->line_length \
-				+ (size * y + i) * (img->bpp / 8)) = color;
-				i++;
-		}
-		j++;
-	}
-}
-
-static void	draw_minimap(t_info *info)
-{
-	int	x;
-	int	y;
-	int	color;
-	x = 0;
-	while (x < info->map->height)
-	{
-		y = 0;
-		while (y < info->map->width)
-		{
-			if (ft_strchr(" 1", info->map->map[x][y]))
-				color = 0;
-			else if (y == (int)info->player->pos.x \
-				&& x == (int)info->player->pos.y)
-				color = 16711680;
-			else
-				color = 16777215;
-			draw_square(info->img, x, y, color);
-			y++;
-		}
-		x++;
-	}
-}
 
 static void	draw_line(t_info *info, t_dda *dda, int w)
 {
