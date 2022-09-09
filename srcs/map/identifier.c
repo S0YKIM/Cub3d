@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 16:22:14 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/01 14:54:52 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/09 15:53:08 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 int	save_wall_texture(t_info *info, char *line)
 {
 	int	direction;
+	int	i;
 
 	direction = -1;
+	i = 3;
 	if (!ft_strncmp(line, "EA ", 3))
 		direction = FT_EAST;
 	else if (!ft_strncmp(line, "WE ", 3))
@@ -27,7 +29,9 @@ int	save_wall_texture(t_info *info, char *line)
 		direction = FT_NORTH;
 	if (info->map->tex_files[direction])
 		exit_with_free_all("Duplicated wall texture info.", line, info);
-	info->map->tex_files[direction] = ft_strdup(line + 3);
+	while (line[i] && line[i] == ' ')
+		i++;
+	info->map->tex_files[direction] = ft_strdup(line + i);
 	return (FT_TRUE);
 }
 
