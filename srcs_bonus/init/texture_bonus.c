@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 16:03:29 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/09 12:09:05 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/09 13:03:34 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ void	init_texture(t_info *info)
 			&info->map->textures[i].width, &info->map->textures[i].height);
 		if (!textures[i].img)
 			exit_with_mlx_error("Failed to convert xpm file to image.", info);
-		textures[i].data = (char *)mlx_get_data_addr(textures[i].img, &textures[i].bpp, &textures[i].line_length, &textures[i].endian);
+		textures[i].data = (char *)mlx_get_data_addr(textures[i].img, \
+			&textures[i].bpp, &textures[i].line_length, &textures[i].endian);
 		if (!textures[i].data)
 			exit_with_mlx_error("Failed to get address of texture.", info);
 		i++;

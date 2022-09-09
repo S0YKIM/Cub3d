@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 14:30:59 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/09 12:09:45 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/09 13:08:43 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ int	key_down(int keycode, t_info *info)
 {
 	if (keycode == KEY_ESC)
 		exit_with_button_close(info);
-	if (keycode == KEY_D || keycode == KEY_A || keycode == KEY_S || keycode == KEY_W)
+	if (keycode == KEY_D || keycode == KEY_A || \
+		keycode == KEY_S || keycode == KEY_W)
 		return (move_player_position(keycode, info, FT_TRUE));
 	if (keycode == KEY_LEFT || keycode == KEY_RIGHT)
 		return (move_direction_vector(keycode, info));
@@ -47,7 +48,8 @@ int	key_down(int keycode, t_info *info)
 
 int	key_up(int keycode, t_info *info)
 {
-	if (keycode == KEY_D || keycode == KEY_A || keycode == KEY_S || keycode == KEY_W)
+	if (keycode == KEY_D || keycode == KEY_A || \
+		keycode == KEY_S || keycode == KEY_W)
 		return (move_player_position(keycode, info, FT_FALSE));
 	if (keycode == KEY_LEFT)
 		info->player->key.arrow = 0;

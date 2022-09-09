@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 16:16:58 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/07 16:30:52 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/09 13:01:41 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ static void	init_mlx(t_info *info)
 	info->mlx = mlx_init();
 	if (!info->mlx)
 		exit_with_free_all("Failed to initialize mlx.", NULL, info);
-	info->window = mlx_new_window(info->mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "cub3d");
+	info->window = mlx_new_window(info->mlx, WINDOW_WIDTH, \
+		WINDOW_HEIGHT, "cub3d");
 	if (!info->window)
 		exit_with_free_all("Failed to initialize window.", NULL, info);
 }
@@ -63,7 +64,8 @@ static void	init_image(t_info *info, t_img *img)
 	img->img = mlx_new_image(info->mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
 	if (!img->img)
 		exit_with_mlx_error("Image creation failed.", info);
-	img->data = (char *)mlx_get_data_addr(img->img, &img->bpp, &img->line_length, &img->endian);
+	img->data = (char *)mlx_get_data_addr(img->img, &img->bpp, \
+		&img->line_length, &img->endian);
 	if (!img->data)
 		exit_with_mlx_error("Failed to get image address.", info);
 }
