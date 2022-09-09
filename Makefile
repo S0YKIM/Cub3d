@@ -6,7 +6,7 @@
 #    By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/28 11:32:01 by sokim             #+#    #+#              #
-#    Updated: 2022/09/08 12:31:37 by sokim            ###   ########.fr        #
+#    Updated: 2022/09/09 12:13:39 by sokim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,24 +15,30 @@ NAME = cub3d
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
-SRCS = srcs/main.c \
-		srcs/init/info.c \
-		srcs/exit/mlx.c \
-		srcs/exit/program.c \
-		srcs/map/map.c \
-		srcs/map/check.c \
-		srcs/map/wall.c \
-		srcs/map/identifier.c \
-		srcs/mlx/keyhook.c \
-		srcs/math/rotate.c \
-		srcs/map/player.c \
-		srcs/mlx/draw.c \
-		srcs/dda/set.c \
-		srcs/dda/hit.c \
-		srcs/dda/perp.c \
-		srcs/dda/line.c \
-		srcs/init/texture.c \
-		srcs/mlx/texture.c
+FILES = main \
+		init/info \
+		exit/mlx \
+		exit/program \
+		map/map \
+		map/check \
+		map/wall \
+		map/identifier \
+		mlx/keyhook \
+		math/rotate \
+		map/player \
+		mlx/draw \
+		dda/set \
+		dda/hit \
+		dda/perp \
+		dda/line \
+		init/texture \
+		mlx/texture
+
+SRCS_DIR = ./srcs/
+SRCS_B_DIR = ./srcs_bonus/
+
+SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))
+SRCS_B = $(addprefix $(SRCS_B_DIR), $(addsuffix _bonus.c, $(FILES)))
 
 OBJS = $(SRCS:.c=.o)
 OBJS_B = $(SRCS_B:.c=.o)
