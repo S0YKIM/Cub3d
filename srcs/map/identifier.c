@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   identifier.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: younjkim <younjkim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 16:22:14 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/09 15:53:08 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/09 18:29:40 by younjkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,14 @@ int	save_floor_ceiling_color(t_info *info, char *line)
 	cnt = 0;
 	while (line[i] && cnt <= 2)
 	{
+		color[2] = FT_ERROR;
 		while (ft_isspace(line[i]))
 			i++;
 		if (ft_isdigit(line[i]))
 			color[cnt] = ft_atoi(line + i);
 		if (color[cnt] < 0 || color[cnt] > 255)
 			exit_with_free_all("Invalid color type.", line, info);
-		while (ft_isdigit(line[i]) || line[i] == '\n')
+		while (line[i] && (ft_isdigit(line[i]) || line[i] == '\n'))
 			i++;
 		if (line[i] && line[i] != ',')
 			exit_with_free_all("Invalid color type.", line, info);
