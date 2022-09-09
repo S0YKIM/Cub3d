@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 16:53:35 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/08 13:48:59 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/09 13:25:26 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ typedef struct s_texture
 	double		pos;
 	int			num;
 	uint32_t	color;
+	int			start;
+	int			end;
 }	t_texture;
 
 typedef struct s_key
