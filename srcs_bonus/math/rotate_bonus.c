@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 18:03:24 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/09 12:09:31 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/09 13:04:21 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@ static void	calc_rotated_vector(t_vector *vector, int angle)
 		return ;
 	tmp.x = vector->x;
 	tmp.y = vector->y;
-	vector->x = tmp.x * cos(angle * M_PI / 180) - tmp.y * sin(angle * M_PI / 180);
-	vector->y = tmp.x * sin(angle * M_PI / 180) + tmp.y * cos(angle * M_PI / 180);
+	vector->x = tmp.x * cos(angle * M_PI / 180) - \
+		tmp.y * sin(angle * M_PI / 180);
+	vector->y = tmp.x * sin(angle * M_PI / 180) + \
+		tmp.y * cos(angle * M_PI / 180);
 }
 
 void	rotate_vector(t_player *player, int angle)

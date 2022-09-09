@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 16:25:08 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/09 12:37:40 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/09 13:29:57 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,25 @@
 
 static void	draw_line(t_info *info, t_dda *dda, int w)
 {
-	int			start;
-	int			end;
 	t_texture	tex;
 	t_img		*src;
 	t_img		*dst;
 
-	calc_texture_offset(info, dda, &tex, &start, &end);
+	calc_texture_offset(info, dda, &tex);
 	tex.num = find_tex_num(dda);
 	dst = info->img;
 	src = &info->map->textures[tex.num];
-	while (start < end)
+	while (tex.start < tex.end)
 	{
 		tex.y = (int)tex.pos & (TEXTURE_HEIGHT - 1);
 		tex.pos += tex.step;
-		tex.color = *(unsigned int *)(src->data + tex.y * src->line_length + tex.x * src->bpp / 8);
+		tex.color = *(unsigned int *)(src->data + \
+			tex.y * src->line_length + tex.x * src->bpp / 8);
 		if (dda->hit_side == HIT_Y)
 			tex.color = (tex.color >> 1) & 8355711;
-		*(unsigned int *)(dst->data + start * dst->line_length + w * dst->bpp / 8) \
-			= tex.color;
-		start++;
+		*(unsigned int *)(dst->data + tex.start * dst->line_length + \
+			w * dst->bpp / 8) = tex.color;
+		tex.start++;
 	}
 }
 
@@ -67,9 +66,11 @@ static void	draw_ceiling_floor(t_img *img, t_map *map)
 		while (y < WINDOW_HEIGHT)
 		{
 			if (y < WINDOW_HEIGHT / 2)
-				*(unsigned int *)(img->data + y * img->line_length + x * byte) = map->ceiling;
+				*(unsigned int *)(img->data + y * \
+					img->line_length + x * byte) = map->ceiling;
 			else
-				*(unsigned int *)(img->data + y * img->line_length + x * byte) = map->floor;				
+				*(unsigned int *)(img->data + y * \
+					img->line_length + x * byte) = map->floor;
 			y++;
 		}
 		x++;

@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 11:41:26 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/08 14:29:15 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/09 13:27:49 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int		calc_line_height(int *start, int *end, t_dda *dda);
  * Texturing functions
  */
 void	init_texture(t_info *info);
-void	calc_texture_offset(t_info *info, t_dda *dda, t_texture *tex, int *start, int *end);
+void	calc_texture_offset(t_info *info, t_dda *dda, t_texture *tex);
 int		find_tex_num(t_dda *dda);
 
 #endif
