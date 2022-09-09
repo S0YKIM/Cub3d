@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 13:15:55 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/01 15:14:28 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/09 16:06:05 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,12 @@ static void	check_preconditions(t_map *map, t_info *info, char *line)
 	info->map->flag = FT_TRUE;
 }
 
+static void	check_undefined_letter(t_info *info, char *line, int i)
+{
+	if (!ft_strchr(" EWSN01", line[i]))
+		exit_with_free_all("Invalid map contents.", line, info);
+}
+
 static void	make_map(t_info *info, char *line)
 {
 	int	i;
@@ -39,12 +45,14 @@ static void	make_map(t_info *info, char *line)
 	i = 0;
 	while (line[i])
 	{
-		if (!ft_strchr(" EWSN01", line[i]))
-			exit_with_free_all("Invalid map contents.", line, info);
+		check_undefined_letter(info, line, i);
 		check_preconditions(info->map, info, line);
 		i = 0;
 		while (line[i])
+		{
+			check_undefined_letter(info, line, i);
 			i++;
+		}
 		if (i > info->map->width)
 			info->map->width = i;
 		info->map->tmp = ft_strjoin_free(info->map->tmp, line, 'L');
