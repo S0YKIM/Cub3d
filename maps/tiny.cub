@@ -3,8 +3,8 @@ SO ./textures/texture2.xpm
 WE ./textures/texture3.xpm
 EA ./textures/texture4.xpm
 
-F 0,255,0
-C 0,0,255
+F 85, 85, 85
+C 174, 191, 200
 
 111
 1N1

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: younjkim <younjkim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 13:15:55 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/09 12:09:10 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/09 18:57:36 by younjkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ static void	check_preconditions(t_map *map, t_info *info, char *line)
 		i++;
 	}
 	if (map->floor == FT_ERROR)
-		exit_with_free_all("There is no floor color info.", line, info);
+		exit_with_free_all("Invalid color type.", line, info);
 	if (map->ceiling == FT_ERROR)
-		exit_with_free_all("There is no ceiling color info.", line, info);
+		exit_with_free_all("Invalid color type.", line, info);
 	info->map->flag = FT_TRUE;
 }
 

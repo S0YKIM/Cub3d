@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   macro.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: younjkim <younjkim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 16:54:10 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/08 13:55:53 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/09 16:56:02 by younjkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@
 /*
  * Wall texture
  */
-# define TEXTURE_WIDTH 64
-# define TEXTURE_HEIGHT 64
+# define TEXTURE_WIDTH 256
+# define TEXTURE_HEIGHT 256
 
 #endif
