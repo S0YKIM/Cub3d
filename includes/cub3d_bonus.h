@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 11:41:26 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/08 14:29:15 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/09 12:38:14 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,10 @@ int		calc_line_height(int *start, int *end, t_dda *dda);
 void	init_texture(t_info *info);
 void	calc_texture_offset(t_info *info, t_dda *dda, t_texture *tex, int *start, int *end);
 int		find_tex_num(t_dda *dda);
+
+/*
+ * Minimap functions
+ */
+void	draw_minimap(t_info *info);
 
 #endif
