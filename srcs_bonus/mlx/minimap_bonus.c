@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 12:37:24 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/09 12:43:03 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/09 13:36:25 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,18 @@ static void	interpolate(t_info *info, int *x, int y)
 	}
 }
 
-void		draw_minimap(t_info *info)
+void	set_color(t_info *info, int *color, int x, int y)
+{
+	if (ft_strchr(" 1", info->map->map[y][x]))
+		*color = 0;
+	else if (x == (int)info->player->pos.x \
+		&& y == (int)info->player->pos.y)
+		*color = 16711680;
+	else
+		*color = 16777215;
+}
+
+void	draw_minimap(t_info *info)
 {
 	int	y;
 	int	x;
@@ -59,13 +70,7 @@ void		draw_minimap(t_info *info)
 				interpolate(info, &x, y);
 				continue ;
 			}
-			else if (ft_strchr(" 1", info->map->map[y][x]))
-				color = 0;
-			else if (x == (int)info->player->pos.x \
-				&& y == (int)info->player->pos.y)
-				color = 16711680;
-			else
-				color = 16777215;
+			set_color(info, &color, x, y);
 			draw_square(info->img, x, y, color);
 			x++;
 		}
