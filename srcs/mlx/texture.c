@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 12:29:13 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/08 13:52:46 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/09 11:40:02 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,5 @@ void	calc_texture_offset(t_info *info, t_dda *dda, t_texture *tex, int *start, i
     else if (dda->hit_side == HIT_Y && dda->ray_dir_y < 0)
 		tex->x = TEXTURE_WIDTH - tex->x - 1;
 	tex->step = 1.0 * TEXTURE_HEIGHT / line_height;
-	tex->pos = (*start - WINDOW_WIDTH / 2 + line_height / 2) * tex->step;
+	tex->pos = (*start - WINDOW_HEIGHT / 2 + line_height / 2) * tex->step;
 }
