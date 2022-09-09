@@ -6,12 +6,12 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 16:53:35 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/09 13:41:14 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/09 14:59:10 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCT_H
-# define STRUCT_H
+#ifndef STRUCT_BONUS_H
+# define STRUCT_BONUS_H
 
 # include <stdbool.h>
 
