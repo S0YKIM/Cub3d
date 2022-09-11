@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 16:54:10 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/09 14:58:18 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/11 17:17:39 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@
 /*
  * Wall texture
  */
-# define TEXTURE_WIDTH 64
-# define TEXTURE_HEIGHT 64
+# define TEXTURE_WIDTH 256
+# define TEXTURE_HEIGHT 256
 
 #endif

@@ -6,11 +6,11 @@
 #    By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/28 11:32:01 by sokim             #+#    #+#              #
-#    Updated: 2022/09/09 12:39:12 by sokim            ###   ########.fr        #
+#    Updated: 2022/09/11 17:18:18 by sokim            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = cub3d
+NAME = cub3D
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
