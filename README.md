@@ -73,7 +73,7 @@ A S D  Press these keys to move player
 </br>
 
 ## 🌊 Flowchart
-![flowchart](https://github.com/S0YKIM/Cub3d/blob/main/img/program%20process.png?raw=true)
+![flowchart](https://github.com/S0YKIM/Cub3d/blob/main/img/program%20process.jpg?raw=true)
 
 </br>
 </br>
