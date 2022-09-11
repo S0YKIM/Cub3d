@@ -11,6 +11,27 @@
 
 </br>
 
+## Structure
+```
+./
+├── includes/		# header files
+├── libs/		# library files
+│   ├── libft
+│   ├── gnl
+│   └── mlx
+├── srcs/		# source files
+│   ├── dda/            # raycasting functions
+│   ├── exit/           # exit functions
+│   ├── init/           # initialization functions
+│   ├── map/            # map functions
+│   ├── math            # calculating funtions
+│   └── mlx/	       	# rendering functions
+├── maps/               # test map files
+├── img/                # images for README
+├── textures/           # images for wall texturing
+└── Makefile
+```
+
 ## Usage
 
 1. 
