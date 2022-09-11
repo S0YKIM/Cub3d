@@ -5,6 +5,7 @@
 </div>
 
 
+## Contributers
 [🍀 sokim](https://github.com/S0YKIM) | [ 🔮 younjkim](https://github.com/objectio)
 
 [🔗 노션 정리](https://pouncing-elbow-0a4.notion.site/Cub3d-398cfcddc5cd4725a88dba8f2b59251b)
@@ -32,16 +33,46 @@
 └── Makefile
 ```
 
+</br>
+
 ## Usage
 
-1. 
-2. 
-3. 
+### Clone
+```
+git clone https://github.com/S0YKIM/Cub3d
+```
 
+### Compile
+If you want to test basic mode...
+```
+make
+```
+If you want to see minimap...
+```
+make bonus
+```
+
+### Execute
+```
+./cub3D [path to .cub file]
+```
+
+### Play
+```
+  W
+A S D  Press these keys to move player  
+```
+```
+<- ->  Press these keys to rotate player  
+```
+
+</br>
 
 ## Flowchart
 ![flowchart](https://github.com/S0YKIM/Cub3d/blob/main/img/program%20process.png?raw=true)
-<br><br>
+
+</br>
+</br>
 
 ## Developing Process
 
