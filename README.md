@@ -5,14 +5,14 @@
 </div>
 
 
-## Contributers
+## 🚀 Contributers
 [🍀 sokim](https://github.com/S0YKIM) | [ 🔮 younjkim](https://github.com/objectio)
 
 [🔗 노션 정리](https://pouncing-elbow-0a4.notion.site/Cub3d-398cfcddc5cd4725a88dba8f2b59251b)
 
 </br>
 
-## Structure
+## 🚧 Structure
 ```
 ./
 ├── includes/		# header files
@@ -35,26 +35,30 @@
 
 </br>
 
-## Usage
+## ❓ Usage
 
 ### Clone
 ```
-git clone https://github.com/S0YKIM/Cub3d
+$ git clone https://github.com/S0YKIM/Cub3d
 ```
 
 ### Compile
 If you want to test basic mode...
 ```
-make
+$ make
 ```
 If you want to see minimap...
 ```
-make bonus
+$ make bonus
 ```
 
 ### Execute
 ```
-./cub3D [path to .cub file]
+$ ./cub3D [path to .cub file]
+```
+For example...
+```
+$ ./cub3D maps/map.cub
 ```
 
 ### Play
@@ -68,13 +72,13 @@ A S D  Press these keys to move player
 
 </br>
 
-## Flowchart
+## 🌊 Flowchart
 ![flowchart](https://github.com/S0YKIM/Cub3d/blob/main/img/program%20process.png?raw=true)
 
 </br>
 </br>
 
-## Developing Process
+## 👭 Developing Process
 
 > 🍀 sokim | 🔮 younjkim
 
