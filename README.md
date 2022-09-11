@@ -27,6 +27,7 @@
 │   ├── map/            # map functions
 │   ├── math            # calculating funtions
 │   └── mlx/	       	# rendering functions
+├── srcs_bonus/		# source files for bonus
 ├── maps/               # test map files
 ├── img/                # images for README
 ├── textures/           # images for wall texturing
