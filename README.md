@@ -1,6 +1,8 @@
-# Cub3d
-
-C project to make 3D game using ray-caster
+<div align="center">
+  <img src="path" height="128px" alt="name" >
+  <h1>Cub3D</h1>
+  <p> Simple first-person 3d game with raycasting </p>
+</div>
 
 
 [🍀 sokim](https://github.com/S0YKIM) | [ 🔮 younjkim](https://github.com/objectio)
