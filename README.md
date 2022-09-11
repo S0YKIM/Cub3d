@@ -37,31 +37,26 @@
 
 ## ❓ Usage
 
-### Clone
+### 🖐️ Clone
 ```
 $ git clone https://github.com/S0YKIM/Cub3d
 ```
 
-### Compile
-If you want to test basic mode...
+### 🖐️ Compile
 ```
 $ make
 ```
-If you want to see minimap...
 ```
-$ make bonus
+$ make bonus  # minimap added to basic mode
 ```
 
-### Execute
+### 🖐️ Execute
 ```
 $ ./cub3D [path to .cub file]
 ```
-For example...
-```
-$ ./cub3D maps/map.cub
-```
 
-### Play
+
+### 🖐️ Play
 ```
   W
 A S D  Press these keys to move player  
