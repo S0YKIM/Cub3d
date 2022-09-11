@@ -19,8 +19,8 @@
 
 
 ## Flowchart
-
-
+![flowchart](https://github.com/S0YKIM/Cub3d/blob/main/img/program%20process.png?raw=true)
+<br><br>
 
 ## Developing Process
 
