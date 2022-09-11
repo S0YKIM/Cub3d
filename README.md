@@ -11,7 +11,18 @@
 
 </br>
 
-## 진행 기록
+## Usage
+
+1. 
+2. 
+3. 
+
+
+## Flowchart
+
+
+
+## Developing Process
 
 > 🍀 sokim | 🔮 younjkim
 
