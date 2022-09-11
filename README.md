@@ -3,7 +3,11 @@
   <h1>Cub3D</h1>
   <p> Simple first-person 3d game with raycasting </p>
 </div>
+</br>
 
+## 🎬 Preview
+![](https://github.com/S0YKIM/Cub3d/blob/main/img/simulation.gif?raw=true)
+</br></br></br>
 
 ## 🚀 Contributers
 [🍀 sokim](https://github.com/S0YKIM) | [ 🔮 younjkim](https://github.com/objectio)
