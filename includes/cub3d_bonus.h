@@ -6,7 +6,7 @@
 /*   By: sokim <sokim@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 11:41:26 by sokim             #+#    #+#             */
-/*   Updated: 2022/09/09 14:57:51 by sokim            ###   ########.fr       */
+/*   Updated: 2022/09/11 12:07:36 by sokim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 # include "libft.h"
 # include "get_next_line.h"
-# include "struct.h"
-# include "macro.h"
+# include "struct_bonus.h"
+# include "macro_bonus.h"
 # include "mlx.h"
 # include <stdio.h>
 # include <fcntl.h>
