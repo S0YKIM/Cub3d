@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="path" height="128px" alt="name" >
+  <img src="https://github.com/S0YKIM/Cub3d/blob/main/img/cube.jpg" height="128px" alt="cub3d" >
   <h1>Cub3D</h1>
   <p> Simple first-person 3d game with raycasting </p>
 </div>
