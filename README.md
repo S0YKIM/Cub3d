@@ -44,7 +44,7 @@
 
 ### 🖐️ Clone
 ```
-$ git clone https://github.com/S0YKIM/Cub3d
+$ git clone https://github.com/S0YKIM/Cub3d.git
 ```
 
 ### 🖐️ Compile
